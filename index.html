@@ -131,6 +131,39 @@ h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 4
 .chip.D { border-left-color: var(--d); } .chip.R { border-left-color: var(--r); }
 .chip b { color: var(--ink); }
 
+/* schedule & results */
+.tl { position: relative; margin-top: 8px; }
+.tl .hours { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; }
+.tl .hour { background: var(--surface-2); border-radius: 6px; padding: 8px 8px 10px; min-width: 0; position: relative; }
+.tl .hour.past { opacity: .78; }
+.tl .hour.now { outline: 2px solid var(--accent); }
+.tl .hour .h { font-family: var(--mono); font-size: 13px; font-weight: 600; }
+.tl .hour .h small { font-weight: 400; color: var(--ink-3); font-size: 10.5px; display: block; }
+.tl .hour .row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; min-height: 18px; }
+.tl .hour .lbl { font-family: var(--mono); font-size: 9.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); margin-top: 6px; }
+.tl .st { font-family: var(--mono); font-size: 11px; font-weight: 600; padding: 2px 5px; border-radius: 3px; background: var(--surface); color: var(--ink-2); border: 1px solid var(--line); line-height: 1.3; }
+.tl .st.closed { border-color: var(--ink-3); color: var(--ink); }
+.tl .st.calledD { background: var(--d); border-color: var(--d); color: #fff; } .tl .st.calledR { background: var(--r); border-color: var(--r); color: #fff; } .tl .st.calledI { background: var(--i); border-color: var(--i); color: #fff; }
+@media (max-width: 860px) { .tl .hours { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .tl .hours { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tl .key { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; font-size: 12px; color: var(--ink-2); align-items: center; }
+.tally { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+@media (max-width: 620px) { .tally { grid-template-columns: 1fr; } }
+.tally .box { background: var(--surface-2); border-radius: 6px; padding: 10px 12px; }
+.tally .box .k { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); }
+.tally .nums { display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px; font-family: var(--mono); font-weight: 600; font-size: 22px; }
+.tally .nums small { font-size: 12px; font-weight: 500; color: var(--ink-3); }
+.tally .bar { position: relative; height: 14px; border-radius: 4px; background: var(--line); display: flex; overflow: hidden; margin-top: 6px; }
+.tally .bar i { display: block; height: 100%; } .tally .bar i.d { background: var(--d); } .tally .bar i.r { background: var(--r); margin-left: auto; } .tally .bar i.i { background: var(--i); }
+.tally .bar .maj { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--accent); }
+.tally .t { font-size: 12px; color: var(--ink-2); margin-top: 6px; }
+.card .res { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); font-size: 12px; color: var(--ink-2); }
+.card .res .line { display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.card .res b { color: var(--ink); font-weight: 600; }
+.card .res .prog { height: 7px; border-radius: 3px; background: var(--surface-2); overflow: hidden; margin-top: 5px; }
+.card .res .prog i { display: block; height: 100%; background: var(--ink-3); }
+.card .res .votes { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; margin-top: 4px; }
+.pill.called { background: var(--good); color: #fff; }
 /* charts */
 .dist { width: 100%; height: 160px; display: block; }
 .dist text { font-family: var(--mono); font-size: 11px; fill: var(--ink-2); }
@@ -160,6 +193,7 @@ h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 4
   <div class="status">
     <span id="st-pm"><span class="dot"></span>Polymarket: loading</span>
     <span id="st-k"><span class="dot"></span>Kalshi: loading</span>
+    <span id="st-res"><span class="dot"></span>Results: loading</span>
     <span id="clock"></span>
     <button class="refresh" id="refresh" type="button">Refresh now</button>
   </div>
@@ -172,6 +206,15 @@ h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 4
     <div class="panel" id="g-senate"></div>
     <div class="panel" id="g-house"></div>
     <div class="panel" id="g-combo"></div>
+  </div>
+</section>
+
+<section>
+  <h2>Tonight's schedule and results so far</h2>
+  <p class="lede">When polls close in the states that matter, in Eastern time. Each state chip turns solid once the Associated Press calls the race. Vote counts come from the AP feed and update every minute; "% in" is the share of the expected total vote that has been counted.</p>
+  <div class="panel">
+    <div class="tl" id="timeline"></div>
+    <div class="tally" id="tally"></div>
   </div>
 </section>
 
@@ -220,7 +263,7 @@ h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 4
 </section>
 
 <div class="foot-note">
-  <p><strong>Sources.</strong> Polymarket (Gamma API, refreshed from your browser every 60 seconds; intraday lines from its price history). Kalshi (public API, refreshed by a scheduled job every 10 minutes; the "as of" time above shows the feed's age). Race ratings from Cook Political Report, final pre-election edition. Starting points: Senate 53 R / 47 D; House 218 R / 214 D / 1 I / 2 vacant; governors 26 R / 24 D.</p>
+  <p><strong>Sources.</strong> Vote counts, race calls and percent of expected vote from the Associated Press via CNN's public results feed, refreshed every 60 seconds. Poll closing times from state election offices as compiled by the AP, NYT and Decision Desk HQ. Polymarket (Gamma API, refreshed from your browser every 60 seconds; intraday lines from its price history). Kalshi (public API, refreshed by a scheduled job every 10 minutes; the "as of" time above shows the feed's age). Race ratings from Cook Political Report, final pre-election edition. Starting points: Senate 53 R / 47 D; House 218 R / 214 D / 1 I / 2 vacant; governors 26 R / 24 D.</p>
   <p id="debug" class="err"></p>
 </div>
 </div>
@@ -290,6 +333,24 @@ const HOUSE_STATES = [
   {st:'NV', seats:4, dNow:3, pm:'how-many-house-seats-will-the-democrats-win-in-nevada'},
 ];
 
+// Poll closing times: local time as voters experience it, and the Eastern time when the last polls in the state close.
+const CLOSE = {
+  'S-TX': {local:'7 PM CT', et:'8 PM', note:'El Paso closes 9 PM ET'}, 'S-ME': {local:'8 PM ET', et:'8 PM'}, 'S-OH': {local:'7:30 PM ET', et:'7:30 PM'},
+  'S-NC': {local:'7:30 PM ET', et:'7:30 PM'}, 'S-IA': {local:'8 PM CT', et:'9 PM'}, 'S-AK': {local:'8 PM AKST', et:'12 AM', note:'Aleutians 1 AM ET'},
+  'S-KS': {local:'7 PM CT', et:'8 PM', note:'far-west counties 9 PM ET'}, 'S-NE': {local:'8 PM CT / 7 PM MT', et:'9 PM'}, 'S-SC': {local:'7 PM ET', et:'7 PM'},
+  'S-MI': {local:'8 PM ET', et:'8 PM', note:'western U.P. 9 PM ET'}, 'S-GA': {local:'7 PM ET', et:'7 PM'}, 'S-NH': {local:'7–8 PM ET by town', et:'8 PM'},
+  'S-MN': {local:'8 PM CT', et:'9 PM'}, 'S-FL': {local:'7 PM ET', et:'7 PM', note:'Panhandle 8 PM ET'}, 'S-MS': {local:'7 PM CT', et:'8 PM'},
+  'S-LA': {local:'8 PM CT', et:'9 PM'}, 'S-MT': {local:'8 PM MT', et:'10 PM'},
+  'G-GA': {local:'7 PM ET', et:'7 PM'}, 'G-KS': {local:'7 PM CT', et:'8 PM', note:'far-west counties 9 PM ET'}, 'G-NV': {local:'7 PM PT', et:'10 PM'},
+  'G-FL': {local:'7 PM ET', et:'7 PM', note:'Panhandle 8 PM ET'}, 'G-TX': {local:'7 PM CT', et:'8 PM', note:'El Paso 9 PM ET'}, 'G-VT': {local:'7 PM ET', et:'7 PM'},
+  'G-AK': {local:'8 PM AKST', et:'12 AM', note:'Aleutians 1 AM ET'}, 'G-OH': {local:'7:30 PM ET', et:'7:30 PM'}, 'G-IA': {local:'8 PM CT', et:'9 PM'},
+  'G-WI': {local:'8 PM CT', et:'9 PM'}, 'G-AZ': {local:'7 PM MST', et:'9 PM'}, 'G-MI': {local:'8 PM ET', et:'8 PM', note:'western U.P. 9 PM ET'},
+  'G-OR': {local:'8 PM PT', et:'11 PM'}, 'G-NH': {local:'7–8 PM ET by town', et:'8 PM'}, 'G-NE': {local:'8 PM CT / 7 PM MT', et:'9 PM'}, 'G-OK': {local:'7 PM CT', et:'8 PM'},
+};
+const HOURS = ['7 PM','7:30 PM','8 PM','9 PM','10 PM','11 PM','12 AM','1 AM'];
+const CNN = 'https://politics.api.cnn.io/results/';
+const RES = {S:{}, G:{}, bop:{}, at:null};
+
 const CONTROL = {
   senate:'which-party-will-win-the-senate-in-2026', house:'which-party-will-win-the-house-in-2026', combo:'balance-of-power-2026-midterms',
   senSeats:'republican-senate-seats-after-the-2026-midterm-elections-927', senSeatsLow:'republican-senate-seats-after-the-midterms-low-brackets',
@@ -321,6 +382,23 @@ async function fetchHistory() {
     try { const r = await fetch(`https://clob.polymarket.com/prices-history?market=${tok}&interval=1d&fidelity=5`); PM.hist[k] = (await r.json()).history || []; }
     catch (e) { PM.hist[k] = PM.hist[k] || []; }
   }));
+}
+async function fetchResults() {
+  const get = async path => { try { const r = await fetch(CNN + path, {cache:'no-store'}); return r.ok ? await r.json() : null; } catch (e) { return null; } };
+  const [sg, gg, bs, bh] = await Promise.all([get('national-races/2026-SG.json'), get('national-races/2026-GG.json'), get('bop/2026-SG-US.json'), get('bop/2026-HG-US.json')]);
+  const parse = (arr, key) => { if (!Array.isArray(arr)) return; for (const r of arr) {
+    const cands = (r.candidates||[]).map(c => ({name:c.fullName, party:c.candidatePartyCode, votes:+c.voteNum||0, pct:+c.votePercentNum||0, winner:!!c.winner}));
+    const w = cands.find(c => c.winner);
+    RES[key][r.stateAbbreviation] = { pct: Math.min(100, +r.percentReporting||0), total: +r.totalVote||0, cands, status: r.editorialStatus,
+      called: r.editorialStatus === 'called' || !!w, runoff: r.editorialStatus === 'runoff', winner: w || null,
+      closeAt: r.raceEmbargo ? +r.raceEmbargo.assignedPollsClose : null, closed: !!(r.raceEmbargo && r.raceEmbargo.pollsClosed), at: r.extractedAt };
+  } };
+  parse(sg, 'S'); parse(gg, 'G');
+  const bop = b => { if (!b || !b.meta) return null; const P = b.meta.parties; const n = (p, k) => +(P[p] && P[p][k]) || 0;
+    return { dNotUp:n('DEM','notUpForElection'), dWon:n('DEM','held')+n('DEM','flippedSeats'), rNotUp:n('REP','notUpForElection'), rWon:n('REP','held')+n('REP','flippedSeats'),
+      iWon:n('IND','held')+n('IND','flippedSeats')+n('IND','notUpForElection'), undecided:n('UNDECIDED','count'), dMagic:n('DEM','magicNumber'), rMagic:n('REP','magicNumber'), at:b.extractedAt }; };
+  RES.bop.S = bop(bs); RES.bop.H = bop(bh);
+  if (sg || gg) RES.at = new Date().toISOString();
 }
 async function fetchKalshi() {
   let best = null;
@@ -492,7 +570,57 @@ function houseStatesChart() {
   });
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.style.height = Math.round(H * 0.9) + 'px'; svg.innerHTML = s;
 }
-function raceCard(r, p, k) {
+function etNow() { return new Date(new Date().toLocaleString('en-US', {timeZone:'America/New_York'})); }
+function hourIndex(et) { return HOURS.indexOf(et); }
+function currentHourIndex() {
+  const n = etNow(); const mins = n.getHours()*60 + n.getMinutes() + (n.getDate() === 4 ? 24*60 : 0); // Nov 4 early hours count past midnight
+  const marks = [19*60, 19*60+30, 20*60, 21*60, 22*60, 23*60, 24*60, 25*60];
+  let idx = -1; marks.forEach((m,i) => { if (mins >= m) idx = i; }); return idx;
+}
+function renderTimeline() {
+  const nowIdx = currentHourIndex();
+  const chip = (key, st, name) => {
+    const res = RES[key][st]; let cls = 'st', title = `${name}: polls close ${CLOSE[key+'-'+st].local} (${CLOSE[key+'-'+st].et} ET)`;
+    if (res && res.called && res.winner) { cls += ' called' + (res.winner.party === 'D' ? 'D' : res.winner.party === 'R' ? 'R' : 'I'); title += ` · called for ${res.winner.name}`; }
+    else if (res && res.closed) { cls += ' closed'; title += ` · ${Math.round(res.pct)}% in`; }
+    return `<span class="${cls}" data-tip="${esc(title)}">${st}</span>`;
+  };
+  $('#timeline').innerHTML = `<div class="hours">` + HOURS.map((h, i) => {
+    const sen = SENATE_RACES.filter(r => CLOSE['S-'+r.st] && CLOSE['S-'+r.st].et === h).map(r => chip('S', r.st, r.name)).join('');
+    const gov = GOV_RACES.filter(r => CLOSE['G-'+r.st] && CLOSE['G-'+r.st].et === h).map(r => chip('G', r.st, r.name)).join('');
+    const cls = i < nowIdx ? 'past' : i === nowIdx ? 'now' : '';
+    return `<div class="hour ${cls}"><div class="h">${h}<small>ET${i === nowIdx ? ' · now' : ''}</small></div><div class="lbl">Senate</div><div class="row">${sen || '<span style="color:var(--ink-3);font-size:11px">—</span>'}</div><div class="lbl">Governor</div><div class="row">${gov || '<span style="color:var(--ink-3);font-size:11px">—</span>'}</div></div>`;
+  }).join('') + `</div><div class="key"><span class="st">AB</span> polls open &nbsp; <span class="st closed">AB</span> closed, counting &nbsp; <span class="st calledD">AB</span> called for Democrat &nbsp; <span class="st calledR">AB</span> called for Republican &nbsp; <span style="color:var(--ink-3)">Hover a state for its local closing time.</span></div>`;
+}
+function renderTally() {
+  const S = RES.bop.S, H = RES.bop.H;
+  const box = (title, b, total, majority, note) => {
+    if (!b) return `<div class="box"><div class="k">${title}</div><div class="t">Waiting for the first results feed.</div></div>`;
+    const d = b.dNotUp + b.dWon, r = b.rNotUp + b.rWon, i = b.iWon, und = Math.max(0, total - d - r - i);
+    return `<div class="box"><div class="k">${title}</div>
+      <div class="nums"><span class="D">D ${d}</span><small>${und} undecided</small><span class="R">R ${r}</span></div>
+      <div class="bar"><i class="d" style="width:${d/total*100}%"></i>${i?`<i class="i" style="width:${i/total*100}%"></i>`:''}<i class="r" style="width:${r/total*100}%"></i><span class="maj" style="left:${(majority/total*100).toFixed(2)}%"></span></div>
+      <div class="t">${note} Called so far: <b class="num D">${b.dWon} D</b> · <b class="num R">${b.rWon} R</b>${b.dMagic ? ` · Democrats need a net gain of <b class="num">${b.dMagic}</b>` : ' · <b>Democrats reached the majority</b>'}.</div></div>`;
+  };
+  const avgIn = key => { const rs = Object.values(RES[key]).filter(r => r.closed); return rs.length ? rs.reduce((a,r)=>a+r.pct,0)/rs.length : null; };
+  const sIn = avgIn('S'), gIn = avgIn('G');
+  $('#tally').innerHTML = box('Senate seats (AP calls + seats not up)', S, 100, 51, 'Not on the ballot: 34 D, 31 R.') + box('House seats (AP calls)', H, 435, 218, 'All 435 up.')
+    + `<div class="box" style="grid-column:1/-1"><div class="k">Counting progress</div><div class="t">${RES.at ? `Senate races with polls closed: average <b class="num">${sIn == null ? '—' : Math.round(sIn)+'%'}</b> of expected vote in · governor races: <b class="num">${gIn == null ? '—' : Math.round(gIn)+'%'}</b>. Feed updated ${fmtTime(RES.at)}.` : 'Results feed not loaded yet.'}</div></div>`;
+}
+function resultsRow(key, r) {
+  const c = CLOSE[key+'-'+r.st], res = RES[key][r.st];
+  if (!c) return '';
+  const closeLine = `<div class="line"><span>Polls close <b>${c.local}</b> · <b>${c.et} ET</b></span>${c.note ? `<span>${c.note}</span>` : ''}</div>`;
+  if (!res || !res.closed) return `<div class="res">${closeLine}</div>`;
+  const d = res.cands.find(x => x.party === 'D'), rr = res.cands.find(x => x.party === 'R'), ind = res.cands.filter(x => x.party !== 'D' && x.party !== 'R').sort((a,b)=>b.votes-a.votes)[0];
+  const share = x => x ? `${x.pct.toFixed(1)}%` : '—';
+  const call = res.called && res.winner ? `<span class="pill called">AP CALL: ${esc(res.winner.name)}</span>` : res.runoff ? `<span class="pill hold">RUNOFF</span>` : '';
+  return `<div class="res"><div class="line"><span>Polls closed (${c.et} ET) · <b>${Math.round(res.pct)}% in</b></span>${call}</div>
+    <div class="prog"><i style="width:${res.pct}%"></i></div>
+    <div class="votes"><span class="D">${d ? esc(d.name.split(' ').slice(-1)[0]) + ' ' + share(d) : ''}</span>${ind && ind.votes > 0 && ind.pct >= 5 ? `<span class="I">${esc(ind.name.split(' ').slice(-1)[0])} ${share(ind)}</span>` : ''}<span class="R">${rr ? share(rr) + ' ' + esc(rr.name.split(' ').slice(-1)[0]) : ''}</span></div>
+    <div class="line" style="margin-top:3px"><span>${res.total.toLocaleString()} votes counted</span></div></div>`;
+}
+function raceCard(r, p, k, key) {
   const fav = p.d == null ? null : (p.i && p.i > p.d && p.i > p.r ? 'I' : p.d >= p.r ? 'D' : 'R');
   const badge = !fav ? '' : fav !== r.hold ? `<span class="pill flip${fav==='I'?'D':fav}">FLIP → ${fav==='I'?'IND':fav}</span>` : `<span class="pill hold">${r.hold} holds</span>`;
   const third = r.i ? `<div class="foot"><span>${(p.d == null || (p.i||0) > p.d) ? `Democrat ${esc(p.dName)}: ${pct(p.d)}` : `Independent ${esc(r.iName)}: ${pct(p.i)}`}${k && k.i != null ? ` · Kalshi has ${esc(r.iName)} at ${pct(k.i)}` : ''}</span></div>` : '';
@@ -500,14 +628,14 @@ function raceCard(r, p, k) {
     <div class="duel">${r.i && (p.d == null || (p.i||0) > p.d) ? `<div class="cand"><div class="n">${esc(r.iName)}</div><div class="party">Independent</div><div class="pct I">${pct(p.i)}</div></div>` : `<div class="cand"><div class="n">${esc(p.dName)}</div><div class="party">Democrat</div><div class="pct D">${pct(p.d)}</div></div>`}<div></div>
     <div class="cand r"><div class="n">${esc(p.rName)}</div><div class="party">Republican</div><div class="pct R">${pct(p.r)}</div></div></div>
     <div class="track"><i class="d" style="width:${(p.d||0)*100}%"></i>${p.i?`<i class="i" style="width:${p.i*100}%"></i>`:''}<i class="r" style="width:${(p.r||0)*100}%"></i></div>
-    <div class="foot"><span>Kalshi: <b>D ${k ? pct(k.d) : '—'}</b> · R ${k ? pct(k.r) : '—'}</span><span>Held by <b>${r.hold}</b> · Cook: <b>${r.cook}</b></span></div>${third}</div>`;
+    <div class="foot"><span>Kalshi: <b>D ${k ? pct(k.d) : '—'}</b> · R ${k ? pct(k.r) : '—'}</span><span>Held by <b>${r.hold}</b> · Cook: <b>${r.cook}</b></span></div>${third}${resultsRow(key, r)}</div>`;
 }
-function renderRaces(races, cardsId, chipsId, maxCards) {
+function renderRaces(races, cardsId, chipsId, maxCards, key) {
   const rows = races.map(r => ({r, p: raceProbs(r), k: kalshiProb(r)}));
   rows.sort((a,b) => Math.abs((a.p.d??0.5)-0.5) - Math.abs((b.p.d??0.5)-0.5));
   const shown = rows.slice(0, maxCards), rest = rows.slice(maxCards);
-  $(cardsId).innerHTML = shown.map(({r,p,k}) => raceCard(r,p,k)).join('');
-  $(chipsId).innerHTML = rest.length ? `<span class="chip" style="border-left-color:transparent">Less competitive:</span>` + rest.map(({r,p}) => { const fav = (p.d??0) >= 0.5 ? 'D' : 'R'; return `<span class="chip ${fav}"><b>${r.st}</b> ${fav} ${pct(fav==='D'?p.d:p.r)}${fav!==r.hold?' · flip':''}</span>`; }).join('') : '';
+  $(cardsId).innerHTML = shown.map(({r,p,k}) => raceCard(r,p,k,key)).join('');
+  $(chipsId).innerHTML = rest.length ? `<span class="chip" style="border-left-color:transparent">Less competitive:</span>` + rest.map(({r,p}) => { const fav = (p.d??0) >= 0.5 ? 'D' : 'R'; const res = RES[key][r.st]; return `<span class="chip ${fav}"><b>${r.st}</b> ${fav} ${pct(fav==='D'?p.d:p.r)}${fav!==r.hold?' · flip':''}${res && res.called && res.winner ? ' · ✓ called ' + res.winner.party : res && res.closed ? ` · ${Math.round(res.pct)}% in` : ''}</span>`; }).join('') : '';
   return rows;
 }
 
@@ -515,8 +643,9 @@ function renderAll() {
   try {
     renderControl();
     const senDist = spliceDistribution(CONTROL.senSeats, CONTROL.senSeatsLow), houDist = spliceDistribution(CONTROL.houseSeats, CONTROL.houseSeatsLow);
-    const senRows = renderRaces(SENATE_RACES, '#cards-senate', '#chips-senate', 12);
-    const govRows = renderRaces(GOV_RACES, '#cards-gov', '#chips-gov', 9);
+    renderTimeline(); renderTally();
+    const senRows = renderRaces(SENATE_RACES, '#cards-senate', '#chips-senate', 12, 'S');
+    const govRows = renderRaces(GOV_RACES, '#cards-gov', '#chips-gov', 9, 'G');
     seatBar('#bar-senate', 'Senate · 100 seats · Democrats need 51 (Republicans keep control at 50 with the VP tiebreak)', senRows, SENATE_FLOOR, 100, 51);
     houseBar(houDist);
     seatBar('#bar-gov', 'Governors · 50 states · 26 is a majority (36 on the ballot)', govRows, GOV_FLOOR, 50, 26);
@@ -544,11 +673,12 @@ function renderAll() {
 function setStatus() {
   const pmOk = Object.keys(PM.events).length > 0;
   $('#st-pm').innerHTML = `<span class="dot ${pmOk?'':'err'}"></span>Polymarket: ${pmOk ? 'updated ' + fmtTime(PM.at) : 'unavailable'}`;
+  $('#st-res').innerHTML = `<span class="dot ${RES.at ? '' : 'err'}"></span>Results (AP): ${RES.at ? 'updated ' + fmtTime(RES.at) : 'unavailable'}`;
   const kAge = KAL.fetched_at ? (Date.now() - new Date(KAL.fetched_at)) / 60000 : null;
   $('#st-k').innerHTML = `<span class="dot ${kAge == null ? 'err' : kAge > 30 ? 'stale' : ''}"></span>Kalshi: ${kAge == null ? 'no feed yet' : 'as of ' + fmtTime(KAL.fetched_at) + (kAge > 30 ? ` (${Math.round(kAge)} min old)` : '')}`;
 }
 async function refresh(full) {
-  try { await Promise.all([fetchPolymarket(), full ? fetchHistory() : null, full ? fetchKalshi() : null]); }
+  try { await Promise.all([fetchPolymarket(), fetchResults(), full ? fetchHistory() : null, full ? fetchKalshi() : null]); }
   catch (e) { $('#debug').textContent = 'Fetch error: ' + e.message; }
   setStatus(); renderAll();
 }
