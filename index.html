@@ -164,6 +164,23 @@ h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 4
 .card .res .prog i { display: block; height: 100%; background: var(--ink-3); }
 .card .res .votes { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; margin-top: 4px; }
 .pill.called { background: var(--good); color: #fff; }
+/* headline, nav, collapsible sections */
+.headline { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 12px 16px; margin-bottom: 14px; font-size: 16px; line-height: 1.5; }
+.headline b { font-weight: 600; }
+.headline .sub { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+nav.jump { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 8px 0; margin-bottom: 14px; border-bottom: 1px solid var(--line); display: flex; gap: 6px; flex-wrap: wrap; }
+nav.jump a { font-family: var(--mono); font-size: 11.5px; text-decoration: none; color: var(--ink-2); padding: 4px 9px; border-radius: 4px; background: var(--surface); border: 1px solid var(--line); }
+nav.jump a:hover { color: var(--ink); border-color: var(--ink-3); }
+details.sec { margin-top: 12px; }
+details.sec > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--ink-2); padding: 10px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+details.sec > summary::-webkit-details-marker { display: none; }
+details.sec > summary::before { content: "▸"; font-size: 12px; color: var(--ink-3); }
+details.sec[open] > summary::before { content: "▾"; }
+details.sec[open] > summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+details.sec > .body { border: 1px solid var(--line); border-top: 0; border-radius: 0 0 8px 8px; padding: 14px; background: var(--surface); }
+details.sec > .body .panel { border: 0; padding: 0; background: transparent; }
+details.sec > .body .grid.c2 > .panel { background: var(--surface-2); padding: 12px; border-radius: 6px; }
+section { scroll-margin-top: 56px; }
 /* odds chart, movers, watch, events */
 .oc { width: 100%; height: 240px; display: block; }
 .oc text { font-family: var(--mono); font-size: 11px; fill: var(--ink-2); }
@@ -237,90 +254,79 @@ tr:last-child td { border-bottom: 0; }
   </div>
 </header>
 
-<section>
+<div class="headline" id="headline">Loading the latest odds and results.</div>
+<nav class="jump" aria-label="Jump to section"><a href="#control">Control</a><a href="#schedule">Schedule &amp; results</a><a href="#senate">Senate</a><a href="#house">House</a><a href="#governors">Governors</a><a href="#majorities">How majorities work</a></nav>
+
+<section id="control">
   <h2>Who wins control?</h2>
-  <p class="lede">Prediction-market odds that each party controls the chamber when the new Congress is sworn in. These are prices, not forecasts: a 78% contract pays $1 if it happens and trades at 78¢.</p>
+  <p class="lede">Market odds that each party controls the chamber in January. A 78% contract pays $1 if it happens and trades at 78¢: a price, not a forecast.</p>
   <div class="grid c3">
     <div class="panel" id="g-senate"></div>
     <div class="panel" id="g-house"></div>
     <div class="panel" id="g-combo"></div>
   </div>
+  <div class="panel" style="margin-top:12px"><div class="kicker">Odds through the night · dotted lines are poll-closing waves · gold dots are AP calls</div><svg class="oc" id="odds-chart" role="img" aria-label="Control odds through election night"></svg></div>
+  <details class="sec" id="moving"><summary>What's moving: biggest movers, market vs. count, latest events</summary><div class="body">
+    <div class="grid c3">
+      <div class="panel"><div class="kicker">Biggest movers, last hour</div><div class="list" id="movers"></div></div>
+      <div class="panel"><div class="kicker">Market vs. count</div><p class="note" style="margin:0 0 4px">Races past half counted where the vote leader is not the market favorite.</p><div class="list" id="diverge"></div></div>
+      <div class="panel"><div class="kicker">Latest events</div><div class="list" id="events"></div></div>
+    </div>
+  </div></details>
 </section>
 
-<section>
-  <h2>Odds through the night</h2>
-  <p class="lede">Polymarket's price for Democratic control, from 6 AM Eastern today onward. Dotted lines mark each poll-closing wave; gold dots mark AP race calls as this page sees them.</p>
-  <div class="panel"><svg class="oc" id="odds-chart" role="img" aria-label="Control odds through election night"></svg></div>
-  <div class="grid c3" style="margin-top:12px">
-    <div class="panel"><div class="kicker">Biggest movers, last hour</div><div class="list" id="movers"></div></div>
-    <div class="panel"><div class="kicker">Market vs. count</div><p class="note" style="margin:0 0 4px">Races past half counted where the vote leader is not the market favorite.</p><div class="list" id="diverge"></div></div>
-    <div class="panel"><div class="kicker">Latest events</div><div class="list" id="events"></div></div>
-  </div>
-</section>
-
-<section>
+<section id="schedule">
   <h2>Tonight's schedule and results so far</h2>
-  <p class="lede">When polls close in the states that matter, in Eastern time. Each state chip turns solid once the Associated Press calls the race. Vote counts come from the AP feed and update every minute; "% in" is the share of the expected total vote that has been counted.</p>
+  <p class="lede">Poll closings in Eastern time (hover a state for local time). Chips fill in when the AP calls a race. "% in" is the share of the expected vote counted.</p>
   <div class="panel">
     <div class="tl" id="timeline"></div>
     <div class="tally" id="tally"></div>
   </div>
 </section>
 
-<section>
-  <h2>How the seats stack up</h2>
-  <p class="lede">Each bar is the full chamber. Solid ends are seats that are safe or not on the ballot. The middle blocks are the contested races (one block per seat, widened for readability), shaded by the market's confidence and ordered from most Democratic to most Republican. The gold line is the majority: Democrats cross it on the race sitting under the line.</p>
+<section id="senate">
+  <h2>Senate</h2>
+  <p class="lede">The seat bar orders every contested race from most Democratic to most Republican; the gold line is 51. Cards are the contested seats, closest first. FLIP means the market favorite is not the party holding the seat.</p>
   <div class="panel seatbar" id="bar-senate"></div>
-  <div class="panel seatbar" id="bar-house" style="margin-top:12px"></div>
-  <div class="panel seatbar" id="bar-gov" style="margin-top:12px"></div>
-</section>
-
-<section>
-  <h2>What each majority size unlocks</h2>
-  <p class="lede">Winning the chamber is only the first threshold. The bars show the market-implied chance of reaching each level, read off the seat-count markets.</p>
-  <div class="grid c2">
-    <div class="panel"><div class="kicker">Senate · 100 seats · Democrats hold 47 today</div><div class="ladder" id="ladder-senate"></div></div>
-    <div class="panel"><div class="kicker">House · 435 seats · Democrats hold 214 today</div><div class="ladder" id="ladder-house"></div></div>
-  </div>
-  <div class="panel prose" style="margin-top:12px">
-    <p><b>Why 50 is enough for Republicans but Democrats need 51.</b> The Vice President breaks Senate ties, and that is JD Vance. So Republicans keep control at 50 seats; Democrats need an outright 51, a net gain of four.</p>
-    <p><b>What a bare majority gets you.</b> Senate: the agenda, every committee chair, and confirmations of judges and cabinet (all simple-majority now). House: the Speaker, committees and subpoena power. Nothing more: ordinary legislation still needs 60 Senate votes to beat a filibuster, and any veto needs two-thirds of both chambers to override, which neither party will have. A Democratic sweep therefore means a blocked White House, not a Democratic agenda.</p>
-  </div>
-</section>
-
-<section>
-  <h2>Senate races that decide it</h2>
-  <p class="lede">The contested seats, closest first. Polymarket is the big number; Kalshi is below the bar. FLIP means the market favorite is not the party that holds the seat today.</p>
-  <div class="grid cards" id="cards-senate"></div>
+  <div class="grid cards" id="cards-senate" style="margin-top:12px"></div>
   <div class="chips" id="chips-senate"></div>
+  <details class="sec" id="county-sec"><summary>County check: the five closest races against 2024</summary><div class="body">
+    <p class="note" style="margin:0 0 8px">Biggest counties by 2024 turnout. "Swing" is the move in the Democratic margin versus Harris's 2024 margin on the votes counted so far. A Democrat flipping a red state needs a swing larger than the state's 2024 gap.</p>
+    <div class="panel" id="county"></div>
+  </div></details>
 </section>
 
-<section>
-  <h2>County check: closest Senate races</h2>
-  <p class="lede">For the five tightest Senate races, the biggest counties by 2024 turnout. "Swing" is how much the Democratic margin has moved versus Harris's 2024 margin in that county, on the votes counted so far. A Democrat flipping a red state needs a swing bigger than the state's 2024 gap. Appears once polls close.</p>
-  <div class="panel" id="county"></div>
-</section>
-
-<section>
-  <h2>Competitive House districts</h2>
-  <p class="lede">The 54 districts rated Toss-up or Lean by the New York Times, with live counts. "2024" is the presidential margin in the district (negative means Trump won it). Democrats need a net gain of 3 to 4 for 218.</p>
+<section id="house">
+  <h2>House</h2>
+  <p class="lede">The 54 districts the New York Times rates Toss-up or Lean, with live counts. "2024" is the presidential margin in the district (R means Trump carried it). Democrats need a net gain of 3 to 4 for 218.</p>
   <div class="panel"><div id="hc-summary" class="note" style="margin:0 0 8px"></div><div class="tablewrap"><table class="hc" id="house-comp"><thead><tr><th>District</th><th>Candidates</th><th>Rating</th><th class="n">2024</th><th>Polls</th><th>% in</th><th>Live margin</th><th>Status</th></tr></thead><tbody></tbody></table></div></div>
+  <details class="sec"><summary>Seat count odds and state-by-state expectations</summary><div class="body">
+    <div class="grid c2">
+      <div class="panel"><div class="kicker">Republican House seats, market-implied odds (218 = majority)</div><svg class="dist" id="house-dist" role="img" aria-label="Distribution of Republican House seats"></svg><div id="house-summary" class="note"></div></div>
+      <div class="panel"><div class="kicker">Expected change in Democratic seats by state (Polymarket)</div><svg class="hbar" id="house-states" role="img" aria-label="Expected change in Democratic House seats by state"></svg></div>
+    </div>
+  </div></details>
 </section>
 
-<section>
-  <h2>Where the House moves</h2>
-  <p class="lede">Left: how many seats Republicans are expected to end with (218 is a majority). Right: expected change in Democratic seats by state, from Polymarket's state-by-state markets. New maps in Texas, California, Florida, Ohio and North Carolina drive most of the movement.</p>
-  <div class="grid c2">
-    <div class="panel"><div class="kicker">Republican House seats, market-implied odds</div><svg class="dist" id="house-dist" role="img" aria-label="Distribution of Republican House seats"></svg><div id="house-summary" class="note"></div></div>
-    <div class="panel"><div class="kicker">Expected change in Democratic seats by state</div><svg class="hbar" id="house-states" role="img" aria-label="Expected change in Democratic House seats by state"></svg></div>
-  </div>
-</section>
-
-<section>
-  <h2>Governors to watch</h2>
-  <p class="lede">36 governorships are on the ballot. Republicans hold 26 of 50 today. The closest races below; the rest are safe for the party that holds them.</p>
-  <div class="grid cards" id="cards-gov"></div>
+<section id="governors">
+  <h2>Governors</h2>
+  <p class="lede">36 on the ballot; Republicans hold 26 of 50 today. The seat bar's gold line is 26. Cards are the closest races; the rest are safe for the party holding them.</p>
+  <div class="panel seatbar" id="bar-gov"></div>
+  <div class="grid cards" id="cards-gov" style="margin-top:12px"></div>
   <div class="chips" id="chips-gov"></div>
+</section>
+
+<section id="majorities">
+  <details class="sec"><summary>How majorities work, and the odds of each size</summary><div class="body">
+    <div class="grid c2">
+      <div class="panel"><div class="kicker">Senate · 100 seats · Democrats hold 47 today</div><div class="ladder" id="ladder-senate"></div></div>
+      <div class="panel"><div class="kicker">House · 435 seats · Democrats hold 214 today</div><div class="ladder" id="ladder-house"></div></div>
+    </div>
+    <div class="prose" style="margin-top:12px">
+      <p><b>Why 50 is enough for Republicans but Democrats need 51.</b> The Vice President breaks Senate ties, and that is JD Vance. Republicans keep control at 50; Democrats need an outright 51, a net gain of four.</p>
+      <p><b>What a bare majority gets you.</b> Senate: the agenda, every committee chair, and confirmations (all simple-majority now). House: the Speaker, committees and subpoena power. Nothing more: ordinary legislation still needs 60 Senate votes, and a veto override needs two-thirds of both chambers, which neither party will have. A Democratic sweep means a blocked White House, not a Democratic agenda.</p>
+    </div>
+  </div></details>
 </section>
 
 <div class="foot-note">
@@ -457,6 +463,8 @@ async function fetchHistory() {
     catch (e) { PM.hist[k] = PM.hist[k] || []; }
   }));
 }
+// The feed occasionally carries test counts before polls close; trust "closed" only once the scheduled close time has passed.
+function isClosed(emb) { if (!emb) return false; const t = +emb.assignedPollsClose; return !!emb.pollsClosed && (!t || Date.now() >= t); }
 async function fetchResults() {
   const get = async path => { try { const r = await fetch(CNN + path, {cache:'no-store'}); return r.ok ? await r.json() : null; } catch (e) { return null; } };
   const [sg, gg, bs, bh] = await Promise.all([get('national-races/2026-SG.json'), get('national-races/2026-GG.json'), get('bop/2026-SG-US.json'), get('bop/2026-HG-US.json')]);
@@ -465,12 +473,12 @@ async function fetchResults() {
     const w = cands.find(c => c.winner);
     RES[key][r.stateAbbreviation] = { pct: Math.min(100, +r.percentReporting||0), total: +r.totalVote||0, cands, status: r.editorialStatus,
       called: r.editorialStatus === 'called' || !!w, runoff: r.editorialStatus === 'runoff', winner: w || null,
-      closeAt: r.raceEmbargo ? +r.raceEmbargo.assignedPollsClose : null, closed: !!(r.raceEmbargo && r.raceEmbargo.pollsClosed), at: r.extractedAt };
+      closeAt: r.raceEmbargo ? +r.raceEmbargo.assignedPollsClose : null, closed: isClosed(r.raceEmbargo), at: r.extractedAt };
   } };
   parse(sg, 'S'); parse(gg, 'G');
   const bop = b => { if (!b || !b.meta) return null; const P = b.meta.parties; const n = (p, k) => +(P[p] && P[p][k]) || 0;
     return { dNotUp:n('DEM','notUpForElection'), dWon:n('DEM','held')+n('DEM','flippedSeats'), rNotUp:n('REP','notUpForElection'), rWon:n('REP','held')+n('REP','flippedSeats'),
-      iWon:n('IND','held')+n('IND','flippedSeats')+n('IND','notUpForElection'), undecided:n('UNDECIDED','count'), dMagic:n('DEM','magicNumber'), rMagic:n('REP','magicNumber'), at:b.extractedAt }; };
+      iWon:n('IND','held')+n('IND','flippedSeats')+n('IND','notUpForElection'), undecided:n('UNDECIDED','count'), dMagic:n('DEM','magicNumber'), rMagic:n('REP','magicNumber'), dWin:!!(P.DEM&&P.DEM.winner), rWin:!!(P.REP&&P.REP.winner), at:b.extractedAt }; };
   RES.bop.S = bop(bs); RES.bop.H = bop(bh);
   if (sg || gg) RES.at = new Date().toISOString();
 }
@@ -481,7 +489,7 @@ async function fetchHouse() {
       const cands = (x.candidates||[]).map(c => ({name:c.fullName, party:c.candidatePartyCode, votes:+c.voteNum||0, pct:+c.votePercentNum||0, winner:!!c.winner, inc:!!c.isIncumbent}));
       const w = cands.find(c => c.winner);
       RES.H[x.ecKey] = { pct: Math.min(100, +x.percentReporting||0), total:+x.totalVote||0, cands, called: x.editorialStatus === 'called' || !!w, runoff: x.editorialStatus === 'runoff', winner: w||null,
-        closeAt: x.raceEmbargo ? +x.raceEmbargo.assignedPollsClose : null, closed: !!(x.raceEmbargo && x.raceEmbargo.pollsClosed) };
+        closeAt: x.raceEmbargo ? +x.raceEmbargo.assignedPollsClose : null, closed: isClosed(x.raceEmbargo) };
     }
     RES.hAt = new Date().toISOString();
   } catch (e) {}
@@ -732,6 +740,30 @@ function resultsRow(key, r) {
     <div class="line" style="margin-top:3px"><span>${res.total.toLocaleString()} votes counted</span></div>${nytLine(key, r.st)}${DIV.find(x => x.key === key && x.r === r) ? `<div class="line" style="margin-top:4px;color:var(--accent)"><b>Count leader differs from market favorite</b></div>` : ''}</div>`;
 }
 let DIV = [];
+// ---- headline ----
+function renderHeadline() {
+  const sD = (findMarket(markets(CONTROL.senate),'Democratic')||{}).p, hD = (findMarket(markets(CONTROL.house),'Democratic')||{}).p;
+  if (sD == null) return;
+  const S = RES.bop.S, H = RES.bop.H;
+  const who = p => p >= 0.5 ? 'Democrats' : 'Republicans', conf = p => { const q = Math.max(p, 1-p); return q >= 0.9 ? 'heavily favored' : q >= 0.7 ? 'favored' : q >= 0.58 ? 'slight favorites' : 'a coin flip'; };
+  let main;
+  if (S && (S.dWin || S.rWin) && H && (H.dWin || H.rWin)) main = `AP has called it: <b>${S.dWin?'Democrats':'Republicans'} win the Senate</b> and <b>${H.dWin?'Democrats':'Republicans'} win the House</b>.`;
+  else if (S && (S.dWin || S.rWin)) main = `AP has called the Senate for <b>${S.dWin?'Democrats':'Republicans'}</b>. House: ${who(hD)} ${conf(hD)} at <b>${pct(Math.max(hD,1-hD))}</b>.`;
+  else if (H && (H.dWin || H.rWin)) main = `AP has called the House for <b>${H.dWin?'Democrats':'Republicans'}</b>. Senate: ${who(sD)} ${conf(sD)} at <b>${pct(Math.max(sD,1-sD))}</b>.`;
+  else main = `Markets: <b>${who(sD)} ${conf(sD)} to win the Senate (${pct(Math.max(sD,1-sD))})</b>, ${who(hD)} ${conf(hD)} to win the House (${pct(Math.max(hD,1-hD))}).`;
+  const closedS = SENATE_RACES.filter(r => RES.S[r.st] && RES.S[r.st].closed).length;
+  const calledS = SENATE_RACES.filter(r => RES.S[r.st] && RES.S[r.st].called).length;
+  const nowMs = Date.now(); const next = WAVES.find(([, t]) => t > nowMs);
+  let phase;
+  if (closedS === 0) phase = next ? `Polls are open everywhere; the first tracked states close at ${next[0]} ET.` : 'Polls have closed everywhere.';
+  else { const dWon = S ? S.dWon : 0, rWon = S ? S.rWon : 0; phase = `${closedS} of ${SENATE_RACES.length} tracked Senate states have closed; ${calledS} called (D ${dWon}, R ${rWon})${S && S.dMagic ? `, Democrats need a net gain of ${S.dMagic}` : ''}.` + (next ? ` Next wave: ${next[0]} ET.` : ''); }
+  const flips = [...SENATE_RACES.map(r => ({r, key:'S'})), ...GOV_RACES.map(r => ({r, key:'G'}))].filter(({r, key}) => { const res = RES[key][r.st]; return res && res.called && res.winner && res.winner.party !== r.hold && (res.winner.party === 'D' || res.winner.party === 'R'); });
+  const flipTxt = flips.length ? ` Flips so far: ${flips.map(({r, key}) => `${r.st} ${key==='S'?'Sen':'Gov'} → ${RES[key][r.st].winner.party}`).join(', ')}.` : '';
+  const divTxt = DIV.length ? ` <b>${DIV.length} race${DIV.length>1?'s':''} where the count disagrees with the market.</b>` : '';
+  $('#headline').innerHTML = `${main}<div class="sub">${phase}${flipTxt}${divTxt}</div>`;
+  const cs = $('#county-sec'); if (cs && !cs.dataset.auto && closestSenate(5).some(r => RES.S[r.st] && RES.S[r.st].closed)) { cs.open = true; cs.dataset.auto = '1'; }
+  const mv = $('#moving'); if (mv && !mv.dataset.auto && (DIV.length || EVENTS.some(e => e.kind === 'call'))) { mv.open = true; mv.dataset.auto = '1'; }
+}
 // ---- odds chart ----
 function renderOddsChart() {
   const svg = $('#odds-chart'); const W = 900, H = 240, mL = 36, mR = 12, mT = 26, mB = 22;
@@ -882,13 +914,12 @@ function renderAll() {
   try {
     renderControl();
     const senDist = spliceDistribution(CONTROL.senSeats, CONTROL.senSeatsLow), houDist = spliceDistribution(CONTROL.houseSeats, CONTROL.houseSeatsLow);
-    DIV = divergences(); detectEvents();
+    DIV = divergences(); detectEvents(); renderHeadline();
     renderOddsChart(); renderMovers(); renderDiverge(DIV); renderEvents();
     renderTimeline(); renderTally(); renderCounty(); renderHouseComp();
     const senRows = renderRaces(SENATE_RACES, '#cards-senate', '#chips-senate', 12, 'S');
     const govRows = renderRaces(GOV_RACES, '#cards-gov', '#chips-gov', 9, 'G');
     seatBar('#bar-senate', 'Senate · 100 seats · Democrats need 51 (Republicans keep control at 50 with the VP tiebreak)', senRows, SENATE_FLOOR, 100, 51);
-    houseBar(houDist);
     seatBar('#bar-gov', 'Governors · 50 states · 26 is a majority (36 on the ballot)', govRows, GOV_FLOOR, 50, 26);
     renderLadder('#ladder-senate', [
       ['R 50+', '<b>Republicans keep control.</b> Vance breaks ties.', probAtLeast(senDist,50), 'r'],

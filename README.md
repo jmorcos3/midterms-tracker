@@ -13,6 +13,14 @@ state-level House seat markets.
   Actions schedule every 10 minutes during election week and commits the
   result to `kalshi.json`, which the page reads.
 
+What's on the page: an auto-written headline, chamber-control gauges with
+the odds through the night, a poll-closing schedule with AP seats-called
+tallies, Senate and governor race cards (both venues, AP counts, calls),
+the 54 competitive House districts with live counts, county-level swing
+versus 2024 for the closest Senate races, biggest movers, market-vs-count
+divergence flags, an events log with optional browser alerts, and a
+majority-threshold ladder.
+
 Race ratings shown on the cards are the final pre-election Cook Political
 Report ratings. Starting compositions: Senate 53 R / 47 D; House 218 R /
 214 D / 1 I / 2 vacant; governors 26 R / 24 D.
