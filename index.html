@@ -16,7 +16,7 @@
   --d: #2a78d6; --d-soft: rgba(42,120,214,.15); --d-mid: rgba(42,120,214,.5);
   --r: #e34948; --r-soft: rgba(227,73,72,.15); --r-mid: rgba(227,73,72,.5);
   --i: #6250d6; --i-soft: rgba(98,80,214,.15);
-  --accent: #b8902e; --good: #1f8a4c; --warn: #b26a00;
+  --accent: #b8902e; --good: #1f8a4c; --warn: #b26a00; --h: #1baf7a;
   --sans: 'IBM Plex Sans', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
@@ -28,7 +28,7 @@
     --d: #3987e5; --d-soft: rgba(57,135,229,.22); --d-mid: rgba(57,135,229,.55);
     --r: #e66767; --r-soft: rgba(230,103,103,.22); --r-mid: rgba(230,103,103,.55);
     --i: #9085e9; --i-soft: rgba(144,133,233,.22);
-    --accent: #d4ab45; --good: #3fbf78; --warn: #e0a030;
+    --accent: #d4ab45; --good: #3fbf78; --warn: #e0a030; --h: #199e70;
   }
 }
 :root[data-theme="dark"] {
@@ -38,7 +38,7 @@
   --d: #3987e5; --d-soft: rgba(57,135,229,.22); --d-mid: rgba(57,135,229,.55);
   --r: #e66767; --r-soft: rgba(230,103,103,.22); --r-mid: rgba(230,103,103,.55);
   --i: #9085e9; --i-soft: rgba(144,133,233,.22);
-  --accent: #d4ab45; --good: #3fbf78; --warn: #e0a030;
+  --accent: #d4ab45; --good: #3fbf78; --warn: #e0a030; --h: #199e70;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: var(--bg); color: var(--ink); }
@@ -164,6 +164,43 @@ h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 4
 .card .res .prog i { display: block; height: 100%; background: var(--ink-3); }
 .card .res .votes { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; margin-top: 4px; }
 .pill.called { background: var(--good); color: #fff; }
+/* odds chart, movers, watch, events */
+.oc { width: 100%; height: 240px; display: block; }
+.oc text { font-family: var(--mono); font-size: 11px; fill: var(--ink-2); }
+.oc .grid { stroke: var(--line); stroke-width: 1; }
+.oc .close { stroke: var(--ink-3); stroke-width: 1; stroke-dasharray: 3 3; }
+.oc .close-label { fill: var(--ink-3); font-size: 10px; }
+.oc .now { stroke: var(--accent); stroke-width: 1.5; }
+.list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+.item { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; padding: 7px 10px; border-radius: 6px; background: var(--surface-2); font-size: 13px; min-width: 0; }
+.item .l { min-width: 0; } .item .l b { font-weight: 600; } .item .l small { color: var(--ink-3); font-family: var(--mono); font-size: 11px; display: block; margin-top: 2px; }
+.item .v { font-family: var(--mono); font-weight: 600; white-space: nowrap; text-align: right; font-size: 13px; }
+.item .v small { display: block; font-weight: 400; color: var(--ink-3); font-size: 11px; }
+.item.div { outline: 2px solid var(--accent); }
+.up { color: var(--good); } .dn { color: var(--r); }
+.card.diverge { outline: 2px solid var(--accent); }
+.card .res .nyt { color: var(--ink-2); }
+.empty { font-size: 13px; color: var(--ink-3); padding: 8px 0; }
+button.alerts { font: inherit; font-family: var(--mono); font-size: 11.5px; padding: 5px 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 4px; cursor: pointer; }
+button.alerts.on { border-color: var(--good); color: var(--good); }
+/* house districts */
+.hc th, .hc td { padding: 6px 8px; font-size: 12.5px; }
+.hc .dname { font-family: var(--mono); font-weight: 600; white-space: nowrap; }
+.hc td.n, .hc th.n { text-align: right; }
+.hc .m { font-family: var(--mono); white-space: nowrap; }
+.hc .rt { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); white-space: nowrap; }
+.hc .pbar { display: inline-block; width: 56px; height: 7px; background: var(--surface-2); border-radius: 3px; overflow: hidden; vertical-align: middle; margin-left: 6px; }
+.hc .pbar i { display: block; height: 100%; background: var(--ink-3); }
+.hc tr.called td { opacity: .85; }
+table { width: 100%; border-collapse: collapse; }
+th { text-align: left; font-family: var(--mono); font-size: 10.5px; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+tr:last-child td { border-bottom: 0; }
+.tablewrap { overflow-x: auto; }
+.cty { margin-top: 12px; }
+.cty h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.cty .sub { font-size: 12px; color: var(--ink-3); margin-bottom: 4px; }
+.cty td.n, .cty th.n { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
 /* charts */
 .dist { width: 100%; height: 160px; display: block; }
 .dist text { font-family: var(--mono); font-size: 11px; fill: var(--ink-2); }
@@ -195,6 +232,7 @@ h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 4
     <span id="st-k"><span class="dot"></span>Kalshi: loading</span>
     <span id="st-res"><span class="dot"></span>Results: loading</span>
     <span id="clock"></span>
+    <button class="alerts" id="alerts" type="button">Enable alerts</button>
     <button class="refresh" id="refresh" type="button">Refresh now</button>
   </div>
 </header>
@@ -206,6 +244,17 @@ h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 4
     <div class="panel" id="g-senate"></div>
     <div class="panel" id="g-house"></div>
     <div class="panel" id="g-combo"></div>
+  </div>
+</section>
+
+<section>
+  <h2>Odds through the night</h2>
+  <p class="lede">Polymarket's price for Democratic control, from 6 AM Eastern today onward. Dotted lines mark each poll-closing wave; gold dots mark AP race calls as this page sees them.</p>
+  <div class="panel"><svg class="oc" id="odds-chart" role="img" aria-label="Control odds through election night"></svg></div>
+  <div class="grid c3" style="margin-top:12px">
+    <div class="panel"><div class="kicker">Biggest movers, last hour</div><div class="list" id="movers"></div></div>
+    <div class="panel"><div class="kicker">Market vs. count</div><p class="note" style="margin:0 0 4px">Races past half counted where the vote leader is not the market favorite.</p><div class="list" id="diverge"></div></div>
+    <div class="panel"><div class="kicker">Latest events</div><div class="list" id="events"></div></div>
   </div>
 </section>
 
@@ -247,6 +296,18 @@ h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 4
 </section>
 
 <section>
+  <h2>County check: closest Senate races</h2>
+  <p class="lede">For the five tightest Senate races, the biggest counties by 2024 turnout. "Swing" is how much the Democratic margin has moved versus Harris's 2024 margin in that county, on the votes counted so far. A Democrat flipping a red state needs a swing bigger than the state's 2024 gap. Appears once polls close.</p>
+  <div class="panel" id="county"></div>
+</section>
+
+<section>
+  <h2>Competitive House districts</h2>
+  <p class="lede">The 54 districts rated Toss-up or Lean by the New York Times, with live counts. "2024" is the presidential margin in the district (negative means Trump won it). Democrats need a net gain of 3 to 4 for 218.</p>
+  <div class="panel"><div id="hc-summary" class="note" style="margin:0 0 8px"></div><div class="tablewrap"><table class="hc" id="house-comp"><thead><tr><th>District</th><th>Candidates</th><th>Rating</th><th class="n">2024</th><th>Polls</th><th>% in</th><th>Live margin</th><th>Status</th></tr></thead><tbody></tbody></table></div></div>
+</section>
+
+<section>
   <h2>Where the House moves</h2>
   <p class="lede">Left: how many seats Republicans are expected to end with (218 is a majority). Right: expected change in Democratic seats by state, from Polymarket's state-by-state markets. New maps in Texas, California, Florida, Ohio and North Carolina drive most of the movement.</p>
   <div class="grid c2">
@@ -263,7 +324,7 @@ h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin-bottom: 4
 </section>
 
 <div class="foot-note">
-  <p><strong>Sources.</strong> Vote counts, race calls and percent of expected vote from the Associated Press via CNN's public results feed, refreshed every 60 seconds. Poll closing times from state election offices as compiled by the AP, NYT and Decision Desk HQ. Polymarket (Gamma API, refreshed from your browser every 60 seconds; intraday lines from its price history). Kalshi (public API, refreshed by a scheduled job every 10 minutes; the "as of" time above shows the feed's age). Race ratings from Cook Political Report, final pre-election edition. Starting points: Senate 53 R / 47 D; House 218 R / 214 D / 1 I / 2 vacant; governors 26 R / 24 D.</p>
+  <p><strong>Sources.</strong> District ratings and expected-vote figures from The New York Times results feeds; county baselines from the AP 2024 presidential county results. Vote counts, race calls and percent of expected vote from the Associated Press via CNN's public results feed, refreshed every 60 seconds. Poll closing times from state election offices as compiled by the AP, NYT and Decision Desk HQ. Polymarket (Gamma API, refreshed from your browser every 60 seconds; intraday lines from its price history). Kalshi (public API, refreshed by a scheduled job every 10 minutes; the "as of" time above shows the feed's age). Race ratings from Cook Political Report, final pre-election edition. Starting points: Senate 53 R / 47 D; House 218 R / 214 D / 1 I / 2 vacant; governors 26 R / 24 D.</p>
   <p id="debug" class="err"></p>
 </div>
 </div>
@@ -349,7 +410,20 @@ const CLOSE = {
 };
 const HOURS = ['7 PM','7:30 PM','8 PM','9 PM','10 PM','11 PM','12 AM','1 AM'];
 const CNN = 'https://politics.api.cnn.io/results/';
-const RES = {S:{}, G:{}, bop:{}, at:null};
+const NYT = 'https://static01.nyt.com/elections-assets/pages/data/2026-11-03/';
+const RES = {S:{}, G:{}, H:{}, bop:{}, at:null, hAt:null};
+const NY = {S:{}, G:{}, at:null};
+const MOV = {hist:{}, at:null};        // per-race Polymarket price history (D market yes token)
+let KALH = {rows:[]};                  // Kalshi mid-price history from the scheduled job
+const CTY = {cur:{}, base:{}, at:null};
+let EVENTS = []; try { EVENTS = JSON.parse(localStorage.getItem('mt_events') || '[]'); } catch (e) {}
+let CALLS = {}; try { CALLS = JSON.parse(localStorage.getItem('mt_calls') || '{}'); } catch (e) {}
+let PREV = {}; try { PREV = JSON.parse(localStorage.getItem('mt_prev') || '{}'); } catch (e) {}
+const HOUSE_COMP = [{"key":"2026-HG-AL-2","st":"AL","seat":"2","rating":"lean-rep","d":"Shomari Figures","r":"Rhett Marques","incParty":"D","m24":-14.36},{"key":"2026-HG-AK-1","st":"AK","seat":"1","rating":"lean-rep","d":"Eric Hafner","r":"Nick Begich","incParty":"R","m24":-13.14},{"key":"2026-HG-AZ-1","st":"AZ","seat":"1","rating":"lean-dem","d":"Amish Shah","r":"Jay Feely","incParty":null,"m24":-3.11},{"key":"2026-HG-AZ-2","st":"AZ","seat":"2","rating":"lean-rep","d":"Jonathan Nez","r":"Eli Crane","incParty":"R","m24":-14.97},{"key":"2026-HG-AZ-6","st":"AZ","seat":"6","rating":"lean-dem","d":"JoAnna Mendoza","r":"Juan Ciscomani","incParty":"R","m24":-0.75},{"key":"2026-HG-CA-22","st":"CA","seat":"22","rating":"tossup","d":"Randy Villegas","r":"David Valadao","incParty":"R","m24":-1.8},{"key":"2026-HG-CA-48","st":"CA","seat":"48","rating":"lean-dem","d":"Marni von Wilpert","r":"Jim Desmond","incParty":null,"m24":3.42},{"key":"2026-HG-CO-4","st":"CO","seat":"4","rating":"lean-rep","d":"Eileen Laubacher","r":"Lauren Boebert","incParty":"R","m24":-18.25},{"key":"2026-HG-CO-5","st":"CO","seat":"5","rating":"tossup","d":"Jessica Killin","r":"Jeff Crank","incParty":"R","m24":-9.08},{"key":"2026-HG-CO-8","st":"CO","seat":"8","rating":"lean-dem","d":"Manny Rutinel","r":"Gabe Evans","incParty":"R","m24":-1.83},{"key":"2026-HG-FL-7","st":"FL","seat":"7","rating":"lean-rep","d":"Bale Dalton","r":"Ryan Elijah","incParty":null,"m24":-12.47},{"key":"2026-HG-FL-9","st":"FL","seat":"9","rating":"lean-rep","d":"Darren Soto","r":"Dan Green","incParty":"D","m24":-17.86},{"key":"2026-HG-FL-13","st":"FL","seat":"13","rating":"lean-rep","d":"Leela Gray","r":"Anna Paulina Luna","incParty":"R","m24":-13.32},{"key":"2026-HG-FL-14","st":"FL","seat":"14","rating":"tossup","d":"Kathy Castor","r":"Mike Beltran","incParty":"D","m24":-10.54},{"key":"2026-HG-FL-22","st":"FL","seat":"22","rating":"tossup","d":"Pia Dandiya","r":"Casey Askar","incParty":null,"m24":-10.47},{"key":"2026-HG-FL-25","st":"FL","seat":"25","rating":"lean-dem","d":"Jared Moskowitz","r":"Scott Singer","incParty":"D","m24":-9.15},{"key":"2026-HG-FL-27","st":"FL","seat":"27","rating":"lean-rep","d":"Eliott Rodriguez","r":"Maria Elvira Salazar","incParty":"R","m24":-14.83},{"key":"2026-HG-IN-5","st":"IN","seat":"5","rating":"lean-rep","d":"J.D. Ford","r":"Victoria Spartz","incParty":"R","m24":-16.8},{"key":"2026-HG-IA-1","st":"IA","seat":"1","rating":"lean-dem","d":"Christina Bohannan","r":"Mariannette Miller-Meeks","incParty":"R","m24":-8.47},{"key":"2026-HG-IA-2","st":"IA","seat":"2","rating":"tossup","d":"Lindsay James","r":"Joe Mitchell","incParty":null,"m24":-9.99},{"key":"2026-HG-IA-3","st":"IA","seat":"3","rating":"lean-dem","d":"Sarah Trone Garriott","r":"Zach Nunn","incParty":"R","m24":-4.41},{"key":"2026-HG-KY-6","st":"KY","seat":"6","rating":"tossup","d":"Zach Dembo","r":"Ralph Alvarado","incParty":null,"m24":-15.03},{"key":"2026-HG-ME-2","st":"ME","seat":"2","rating":"lean-rep","d":"Matthew Dunlap","r":"Paul LePage","incParty":null,"m24":-9.53},{"key":"2026-HG-MI-4","st":"MI","seat":"4","rating":"tossup","d":"Sean McCann","r":"Bill Huizenga","incParty":"R","m24":-5.54},{"key":"2026-HG-MI-7","st":"MI","seat":"7","rating":"tossup","d":"William Lawrence","r":"Tom Barrett","incParty":"R","m24":-1.28},{"key":"2026-HG-MI-10","st":"MI","seat":"10","rating":"tossup","d":"Christina Hines","r":"Mike Bouchard","incParty":null,"m24":-6.55},{"key":"2026-HG-MN-1","st":"MN","seat":"1","rating":"lean-rep","d":"Jake Johnson","r":"Brad Finstad","incParty":"R","m24":-12},{"key":"2026-HG-MT-1","st":"MT","seat":"1","rating":"tossup","d":"Sam Forstag","r":"Aaron Flint","incParty":null,"m24":-11.55},{"key":"2026-HG-NV-2","st":"NV","seat":"2","rating":"lean-rep","d":"Teresa Benitez-Thompson","r":"David Flippo","incParty":null,"m24":-13.94},{"key":"2026-HG-NJ-7","st":"NJ","seat":"7","rating":"lean-dem","d":"Rebecca Bennett","r":"Thomas Kean Jr.","incParty":"R","m24":-1.19},{"key":"2026-HG-NM-2","st":"NM","seat":"2","rating":"lean-dem","d":"Gabriel Vasquez","r":"Gregory Cunningham","incParty":"D","m24":-1.81},{"key":"2026-HG-NY-17","st":"NY","seat":"17","rating":"tossup","d":"Cait Conley","r":"Mike Lawler","incParty":"R","m24":0.56},{"key":"2026-HG-NY-21","st":"NY","seat":"21","rating":"lean-rep","d":"Blake Gendebien","r":"Anthony Constantino","incParty":null,"m24":-20.76},{"key":"2026-HG-NC-1","st":"NC","seat":"1","rating":"tossup","d":"Don Davis","r":"Laurie Buckhout","incParty":"D","m24":-11.55},{"key":"2026-HG-NC-11","st":"NC","seat":"11","rating":"lean-dem","d":"Jamie Ager","r":"Jennifer Balkcom","incParty":null,"m24":-9.51},{"key":"2026-HG-OH-7","st":"OH","seat":"7","rating":"tossup","d":"Brian Poindexter","r":"Max Miller","incParty":"R","m24":-11.07},{"key":"2026-HG-OH-9","st":"OH","seat":"9","rating":"lean-dem","d":"Marcy Kaptur","r":"Derek Merrin","incParty":"D","m24":-10.58},{"key":"2026-HG-OH-10","st":"OH","seat":"10","rating":"lean-rep","d":"Kristina Knickerbocker","r":"Mike Turner","incParty":"R","m24":-7.79},{"key":"2026-HG-OH-15","st":"OH","seat":"15","rating":"lean-rep","d":"Don Leonard","r":"Mike Carey","incParty":"R","m24":-10},{"key":"2026-HG-PA-1","st":"PA","seat":"1","rating":"tossup","d":"Bob Harvie","r":"Brian Fitzpatrick","incParty":"R","m24":0.32},{"key":"2026-HG-PA-7","st":"PA","seat":"7","rating":"lean-dem","d":"Bob Brooks","r":"Ryan Mackenzie","incParty":"R","m24":-3.18},{"key":"2026-HG-PA-8","st":"PA","seat":"8","rating":"lean-dem","d":"Paige Cognetti","r":"Rob Bresnahan","incParty":"R","m24":-8.52},{"key":"2026-HG-PA-10","st":"PA","seat":"10","rating":"lean-dem","d":"Janelle Stelson","r":"Scott Perry","incParty":"R","m24":-5.23},{"key":"2026-HG-SC-1","st":"SC","seat":"1","rating":"tossup","d":"Nancy Lacore","r":"Jenny Costa Honeycutt","incParty":null,"m24":-13.08},{"key":"2026-HG-TX-15","st":"TX","seat":"15","rating":"tossup","d":"Bobby Pulido","r":"Monica De La Cruz","incParty":"R","m24":-17.83},{"key":"2026-HG-TX-23","st":"TX","seat":"23","rating":"lean-rep","d":"Katy Padilla Stout","r":"Brandon Herrera","incParty":null,"m24":-14.87},{"key":"2026-HG-TX-34","st":"TX","seat":"34","rating":"lean-dem","d":"Vicente Gonzalez","r":"Eric Flores","incParty":"D","m24":-10.14},{"key":"2026-HG-TX-35","st":"TX","seat":"35","rating":"tossup","d":"Johnny Garcia","r":"Carlos De La Cruz","incParty":null,"m24":-10.56},{"key":"2026-HG-VA-1","st":"VA","seat":"1","rating":"tossup","d":"Shannon Taylor","r":"Rob Wittman","incParty":"R","m24":-4.94},{"key":"2026-HG-VA-2","st":"VA","seat":"2","rating":"lean-dem","d":"Elaine Luria","r":"Jen Kiggans","incParty":"R","m24":-0.29},{"key":"2026-HG-VA-5","st":"VA","seat":"5","rating":"lean-rep","d":"Tom Perriello","r":"John McGuire","incParty":"R","m24":-12.29},{"key":"2026-HG-WA-3","st":"WA","seat":"3","rating":"lean-dem","d":"Marie Gluesenkamp Perez","r":"John Braun","incParty":"D","m24":-3.3},{"key":"2026-HG-WI-1","st":"WI","seat":"1","rating":"lean-rep","d":"Mitchell Berman","r":"Bryan Steil","incParty":"R","m24":-4.5},{"key":"2026-HG-WI-3","st":"WI","seat":"3","rating":"lean-dem","d":"Rebecca Cooke","r":"Derrick Van Orden","incParty":"R","m24":-7.4}];
+// Poll-closing waves in UTC ms (Nov 3-4 2026, EST = UTC-5)
+const WAVES = [['7 PM', Date.UTC(2026,10,4,0,0)], ['7:30', Date.UTC(2026,10,4,0,30)], ['8 PM', Date.UTC(2026,10,4,1,0)], ['9 PM', Date.UTC(2026,10,4,2,0)], ['10 PM', Date.UTC(2026,10,4,3,0)], ['11 PM', Date.UTC(2026,10,4,4,0)], ['12 AM', Date.UTC(2026,10,4,5,0)], ['1 AM', Date.UTC(2026,10,4,6,0)]];
+const CHART_START = Date.UTC(2026,10,3,11,0), CHART_END = Date.UTC(2026,10,4,7,0); // 6 AM ET to 2 AM ET
+
 
 const CONTROL = {
   senate:'which-party-will-win-the-senate-in-2026', house:'which-party-will-win-the-house-in-2026', combo:'balance-of-power-2026-midterms',
@@ -399,6 +473,42 @@ async function fetchResults() {
       iWon:n('IND','held')+n('IND','flippedSeats')+n('IND','notUpForElection'), undecided:n('UNDECIDED','count'), dMagic:n('DEM','magicNumber'), rMagic:n('REP','magicNumber'), at:b.extractedAt }; };
   RES.bop.S = bop(bs); RES.bop.H = bop(bh);
   if (sg || gg) RES.at = new Date().toISOString();
+}
+async function fetchHouse() {
+  try { const r = await fetch(CNN + 'national-races/2026-HG.json', {cache:'no-store'}); if (!r.ok) return; const arr = await r.json();
+    const want = new Set(HOUSE_COMP.map(h => h.key));
+    for (const x of arr) { if (!want.has(x.ecKey)) continue;
+      const cands = (x.candidates||[]).map(c => ({name:c.fullName, party:c.candidatePartyCode, votes:+c.voteNum||0, pct:+c.votePercentNum||0, winner:!!c.winner, inc:!!c.isIncumbent}));
+      const w = cands.find(c => c.winner);
+      RES.H[x.ecKey] = { pct: Math.min(100, +x.percentReporting||0), total:+x.totalVote||0, cands, called: x.editorialStatus === 'called' || !!w, runoff: x.editorialStatus === 'runoff', winner: w||null,
+        closeAt: x.raceEmbargo ? +x.raceEmbargo.assignedPollsClose : null, closed: !!(x.raceEmbargo && x.raceEmbargo.pollsClosed) };
+    }
+    RES.hAt = new Date().toISOString();
+  } catch (e) {}
+}
+async function fetchNYT() {
+  const one = async (file, key) => { try { const r = await fetch(NYT + file, {cache:'no-store'}); if (!r.ok) return; const j = await r.json();
+    for (const race of (j.races||[])) { const t = race.top_reporting_unit || {}; const st = t.state_postal || race.state_postal; if (!st) continue;
+      NY[key][st] = { eevp: t.eevp, expected: t.total_expected_vote, votes: t.total_votes, est: t.nyt_model_estimates, status: race.race_call_status, calledBy: (race.outcome||{}).called_by || [], won: (race.outcome||{}).won || [], meta: race.candidate_metadata || {}, cands: t.candidates || [] };
+    } NY.at = new Date().toISOString(); } catch (e) {} };
+  await Promise.all([one('results-senate.json','S'), one('results-governor.json','G')]);
+}
+function dToken(race) { const ms = markets(race.pm); const m = findMarket(ms, race.d) || ms.find(x => /\(D\)/.test(x.groupItemTitle||'')); if (!m || !m.clobTokenIds) return null; try { return JSON.parse(m.clobTokenIds)[0]; } catch (e) { return null; } }
+async function fetchMovers() {
+  const all = [...SENATE_RACES.map(r => ({r, key:'S-'+r.st})), ...GOV_RACES.map(r => ({r, key:'G-'+r.st}))];
+  await Promise.all(all.map(async ({r, key}) => { const tok = dToken(r); if (!tok) return;
+    try { const q = await fetch(`https://clob.polymarket.com/prices-history?market=${tok}&interval=1d&fidelity=10`); const j = await q.json(); MOV.hist[key] = j.history || []; } catch (e) {} }));
+  MOV.at = new Date().toISOString();
+  try { const r = await fetch('https://raw.githubusercontent.com/jmorcos3/midterms-tracker/main/kalshi_history.json?t=' + Math.floor(Date.now()/300000), {cache:'no-store'}); if (r.ok) KALH = await r.json(); } catch (e) {}
+}
+function closestSenate(n) { return SENATE_RACES.map(r => ({r, p: raceProbs(r)})).sort((a,b) => Math.abs((a.p.d??0.5)-0.5) - Math.abs((b.p.d??0.5)-0.5)).slice(0, n).map(x => x.r); }
+async function fetchCounties() {
+  const targets = closestSenate(5).filter(r => { const res = RES.S[r.st]; return res && res.closed; });
+  await Promise.all(targets.map(async r => {
+    try { const q = await fetch(CNN + `county-races/2026-SG-${r.st}.json`, {cache:'no-store'}); if (q.ok) CTY.cur[r.st] = await q.json(); } catch (e) {}
+    if (!CTY.base[r.st]) { try { const q = await fetch(CNN + `county-races/2024-PG-${r.st}.json`); if (q.ok) CTY.base[r.st] = await q.json(); } catch (e) {} }
+  }));
+  CTY.at = new Date().toISOString();
 }
 async function fetchKalshi() {
   let best = null;
@@ -615,16 +725,145 @@ function resultsRow(key, r) {
   const d = res.cands.find(x => x.party === 'D'), rr = res.cands.find(x => x.party === 'R'), ind = res.cands.filter(x => x.party !== 'D' && x.party !== 'R').sort((a,b)=>b.votes-a.votes)[0];
   const share = x => x ? `${x.pct.toFixed(1)}%` : '—';
   const call = res.called && res.winner ? `<span class="pill called">AP CALL: ${esc(res.winner.name)}</span>` : res.runoff ? `<span class="pill hold">RUNOFF</span>` : '';
-  return `<div class="res"><div class="line"><span>Polls closed (${c.et} ET) · <b>${Math.round(res.pct)}% in</b></span>${call}</div>
-    <div class="prog"><i style="width:${res.pct}%"></i></div>
+  const pin = countIn(key, r.st) ?? res.pct;
+  return `<div class="res"><div class="line"><span>Polls closed (${c.et} ET) · <b>${Math.round(pin)}% in</b></span>${call}</div>
+    <div class="prog"><i style="width:${pin}%"></i></div>
     <div class="votes"><span class="D">${d ? esc(d.name.split(' ').slice(-1)[0]) + ' ' + share(d) : ''}</span>${ind && ind.votes > 0 && ind.pct >= 5 ? `<span class="I">${esc(ind.name.split(' ').slice(-1)[0])} ${share(ind)}</span>` : ''}<span class="R">${rr ? share(rr) + ' ' + esc(rr.name.split(' ').slice(-1)[0]) : ''}</span></div>
-    <div class="line" style="margin-top:3px"><span>${res.total.toLocaleString()} votes counted</span></div></div>`;
+    <div class="line" style="margin-top:3px"><span>${res.total.toLocaleString()} votes counted</span></div>${nytLine(key, r.st)}${DIV.find(x => x.key === key && x.r === r) ? `<div class="line" style="margin-top:4px;color:var(--accent)"><b>Count leader differs from market favorite</b></div>` : ''}</div>`;
+}
+let DIV = [];
+// ---- odds chart ----
+function renderOddsChart() {
+  const svg = $('#odds-chart'); const W = 900, H = 240, mL = 36, mR = 12, mT = 26, mB = 22;
+  const X = t => mL + (t - CHART_START) / (CHART_END - CHART_START) * (W - mL - mR), Y = p => mT + (1 - p) * (H - mT - mB);
+  let s = '';
+  for (const g of [0, .25, .5, .75, 1]) s += `<line x1="${mL}" x2="${W-mR}" y1="${Y(g)}" y2="${Y(g)}" class="grid"/><text x="${mL-6}" y="${Y(g)+4}" text-anchor="end">${g*100}%</text>`;
+  for (const [lab, t] of WAVES) s += `<line x1="${X(t).toFixed(1)}" x2="${X(t).toFixed(1)}" y1="${mT-4}" y2="${H-mB}" class="close"/>` + (lab === '7:30' ? '' : `<text x="${(X(t)+3).toFixed(1)}" y="${H-8}" class="close-label">${lab}</text>`);
+  for (const [hLab, t] of [['6 AM', CHART_START], ['9 AM', Date.UTC(2026,10,3,14,0)], ['Noon', Date.UTC(2026,10,3,17,0)], ['3 PM', Date.UTC(2026,10,3,20,0)], ['6 PM', Date.UTC(2026,10,3,23,0)]]) s += `<text x="${X(t).toFixed(1)}" y="${H-8}" class="close-label">${hLab}</text>`;
+  const line = (hist, cur, color, lab) => { if (!hist || hist.length < 2) return '';
+    const pts = hist.filter(h => h.t*1000 >= CHART_START).map(h => [h.t*1000, h.p]); if (cur != null) pts.push([Date.now(), cur]); if (pts.length < 2) return '';
+    const d = pts.map((p,i) => (i?'L':'M') + X(Math.min(p[0], CHART_END)).toFixed(1) + ' ' + Y(p[1]).toFixed(1)).join(' ');
+    const last = pts[pts.length-1];
+    return `<path d="${d}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round"/><circle cx="${X(Math.min(last[0],CHART_END)).toFixed(1)}" cy="${Y(last[1]).toFixed(1)}" r="4" fill="${color}" stroke="var(--surface)" stroke-width="2"/><text x="${(X(Math.min(last[0],CHART_END))+8).toFixed(1)}" y="${(Y(last[1])+4).toFixed(1)}">${lab} ${pct(last[1])}</text>`; };
+  const sen = markets(CONTROL.senate), hou = markets(CONTROL.house);
+  s += line(PM.hist.senateD, (findMarket(sen,'Democratic')||{}).p, 'var(--d)', 'Senate D');
+  s += line(PM.hist.houseD, (findMarket(hou,'Democratic')||{}).p, 'var(--h)', 'House D');
+  const now = Date.now(); if (now > CHART_START && now < CHART_END) s += `<line x1="${X(now).toFixed(1)}" x2="${X(now).toFixed(1)}" y1="${mT-4}" y2="${H-mB}" class="now"/>`;
+  Object.values(CALLS).forEach(c => { if (c.t < CHART_START || c.t > CHART_END) return; s += `<circle cx="${X(c.t).toFixed(1)}" cy="${mT-10}" r="4" fill="var(--accent)" data-tip="${esc(c.text)}"/>`; });
+  s += `<text x="${mL}" y="12" style="fill:var(--d)">● Senate D</text><text x="${mL+90}" y="12" style="fill:var(--h)">● House D</text><text x="${mL+170}" y="12" style="fill:var(--accent)">● AP calls</text>`;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`); svg.innerHTML = s;
+}
+// ---- movers ----
+function histAt(hist, tMs) { if (!hist || !hist.length) return null; let v = null; for (const h of hist) { if (h.t*1000 <= tMs) v = h.p; else break; } return v == null ? hist[0].p : v; }
+function kalshiAt(ticker, tMs) { const rows = KALH.rows || []; let v = null; for (const r of rows) { const t = Date.parse(r.t); if (t <= tMs && r.p[ticker] != null) v = r.p[ticker]; } return v; }
+function renderMovers() {
+  const now = Date.now(); const rows = [];
+  for (const [key, races] of [['S', SENATE_RACES], ['G', GOV_RACES]]) for (const r of races) {
+    const p = raceProbs(r); if (p.d == null) continue; const h = MOV.hist[key+'-'+r.st]; if (!h || h.length < 2) continue;
+    const d60 = p.d - histAt(h, now - 3600e3), d30 = p.d - histAt(h, now - 1800e3);
+    const k = kalshiProb(r); const k60 = (k && k.d != null) ? (() => { const prev = kalshiAt(r.k + '-D', now - 3600e3); return prev == null ? null : k.d - prev; })() : null;
+    rows.push({r, key, p, d60, d30, k60});
+  }
+  rows.sort((a,b) => Math.abs(b.d60) - Math.abs(a.d60));
+  const fmt = x => x == null ? '—' : (x >= 0 ? '+' : '') + (x*100).toFixed(1);
+  $('#movers').innerHTML = rows.length ? rows.slice(0, 8).map(({r, key, p, d60, d30, k60}) => `<div class="item"><div class="l"><b>${r.st} ${key==='S'?'Senate':'Governor'}</b> · ${esc(p.dName)} (D) ${pct(p.d)}<small>Kalshi 1h: ${fmt(k60)} pts</small></div><div class="v"><span class="${d60>0.005?'up':d60<-0.005?'dn':''}">${fmt(d60)}</span><small>${fmt(d30)} / 30m</small></div></div>`).join('') : `<div class="empty">Price history loading.</div>`;
+}
+// ---- market vs count ----
+function countIn(key, st) { const res = RES[key][st]; if (!res) return null; const ny = NY[key][st]; return (ny && ny.eevp != null && ny.eevp > 0) ? ny.eevp : res.pct; }
+function divergences() {
+  const out = [];
+  for (const [key, races] of [['S', SENATE_RACES], ['G', GOV_RACES]]) for (const r of races) {
+    const res = RES[key][r.st]; if (!res || !res.closed || res.called || res.total === 0) continue;
+    const pin = countIn(key, r.st); if (pin == null || pin < 50) continue;
+    const p = raceProbs(r); if (p.d == null) continue;
+    const fav = (p.i && p.i > p.d && p.i > p.r) ? 'I' : p.d >= p.r ? 'D' : 'R';
+    const lead = [...res.cands].sort((a,b) => b.votes - a.votes)[0]; if (!lead) continue;
+    const leadParty = lead.party === 'D' || lead.party === 'R' ? lead.party : 'I';
+    if (leadParty !== fav) { const second = [...res.cands].sort((a,b) => b.votes - a.votes)[1]; out.push({r, key, res, p, fav, lead, margin: second ? lead.pct - second.pct : lead.pct, pin}); }
+  }
+  return out;
+}
+function renderDiverge(list) {
+  $('#diverge').innerHTML = list.length ? list.map(({r, key, p, fav, lead, margin, pin}) => `<div class="item div"><div class="l"><b>${r.st} ${key==='S'?'Senate':'Governor'}</b> · ${esc(lead.name)} (${lead.party}) leads by ${margin.toFixed(1)} with ${Math.round(pin)}% in<small>Market favorite: ${fav === 'D' ? esc(p.dName) : fav === 'R' ? esc(p.rName) : esc(r.iName||'Independent')} at ${pct(fav==='D'?p.d:fav==='R'?p.r:p.i)}</small></div><div class="v">${fav}</div></div>`).join('') : `<div class="empty">None yet. Needs a race past 50% counted.</div>`;
+}
+// ---- events & alerts ----
+function logEvent(text, kind) { const ev = {t: Date.now(), text, kind}; EVENTS.unshift(ev); EVENTS = EVENTS.slice(0, 40); try { localStorage.setItem('mt_events', JSON.stringify(EVENTS)); } catch (e) {}
+  if (alertsOn() && 'Notification' in window && Notification.permission === 'granted') { try { new Notification('Midterms tracker', {body: text}); } catch (e) {} } }
+function alertsOn() { try { return localStorage.getItem('mt_alerts') === '1'; } catch (e) { return false; } }
+function detectEvents() {
+  const first = !PREV.init;
+  for (const [key, races, lab] of [['S', SENATE_RACES, 'Senate'], ['G', GOV_RACES, 'Governor'], ['H', HOUSE_COMP, 'House']]) for (const r of races) {
+    const id = key === 'H' ? r.key : r.st, res = RES[key][id]; if (!res || !res.called || !res.winner) continue;
+    const ck = key + '-' + id; if (CALLS[ck]) continue;
+    const name = key === 'H' ? `${r.st}-${r.seat}` : r.name; const text = `AP calls ${name} ${lab} for ${res.winner.name} (${res.winner.party})`;
+    CALLS[ck] = {t: Date.now(), text, party: res.winner.party}; if (!first) logEvent(text, 'call');
+  }
+  const sD = (findMarket(markets(CONTROL.senate),'Democratic')||{}).p, hD = (findMarket(markets(CONTROL.house),'Democratic')||{}).p;
+  for (const [lab, cur, prev] of [['Senate', sD, PREV.sD], ['House', hD, PREV.hD]]) { if (cur == null || prev == null) continue;
+    for (const th of [0.1, 0.3, 0.5, 0.7, 0.9]) { if ((prev < th && cur >= th) || (prev >= th && cur < th)) logEvent(`${lab} control: Democrats ${cur >= th ? 'cross above' : 'fall below'} ${th*100}% on Polymarket (now ${pct(cur)})`, 'odds'); } }
+  PREV = {init: true, sD, hD}; try { localStorage.setItem('mt_prev', JSON.stringify(PREV)); localStorage.setItem('mt_calls', JSON.stringify(CALLS)); } catch (e) {}
+}
+function renderEvents() {
+  $('#events').innerHTML = EVENTS.length ? EVENTS.slice(0, 10).map(e => `<div class="item"><div class="l">${esc(e.text)}<small>${fmtTime(new Date(e.t).toISOString())}</small></div></div>`).join('') : `<div class="empty">Race calls and big odds moves will appear here. Enable alerts for a notification while this tab is open.</div>`;
+  const b = $('#alerts'); const on = alertsOn() && 'Notification' in window && Notification.permission === 'granted'; b.className = 'alerts' + (on ? ' on' : ''); b.textContent = on ? 'Alerts on' : 'Enable alerts';
+}
+// ---- county check ----
+function renderCounty() {
+  const targets = closestSenate(5); let html = '';
+  for (const r of targets) {
+    const res = RES.S[r.st], p = raceProbs(r);
+    const chalName = r.i ? `${esc(r.iName)} (I)` : `${esc(p.dName)} (D)`;
+    if (!res || !res.closed) { html += `<div class="cty"><h4>${esc(r.name)} Senate · ${chalName} vs ${esc(p.rName)} (R)</h4><div class="sub">Polls close ${CLOSE['S-'+r.st].local} (${CLOSE['S-'+r.st].et} ET). County detail appears after that.</div></div>`; continue; }
+    const cur = CTY.cur[r.st], base = CTY.base[r.st]; if (!cur || !base) { html += `<div class="cty"><h4>${esc(r.name)} Senate</h4><div class="sub">Loading county feed.</div></div>`; continue; }
+    const bmap = {}; for (const c of base) { const d = c.candidates.find(x => x.candidatePartyCode === 'D'), q = c.candidates.find(x => x.candidatePartyCode === 'R'); bmap[c.countyFipsCode] = {total: +c.totalVote||0, m: d && q && c.totalVote ? (d.voteNum - q.voteNum) / c.totalVote * 100 : null}; }
+    const chal = cs => r.i ? cs.filter(x => x.candidatePartyCode !== 'R').sort((a,b) => b.voteNum - a.voteNum)[0] : cs.find(x => x.candidatePartyCode === 'D');
+    const rows = cur.map(c => { const b = bmap[c.countyFipsCode] || {}; const d = chal(c.candidates), q = c.candidates.find(x => x.candidatePartyCode === 'R');
+      const m = d && q && c.totalVote ? (d.voteNum - q.voteNum) / c.totalVote * 100 : null; return {name: c.countyName, pin: +c.percentReporting||0, total: +c.totalVote||0, m, b: b.m, base: b.total||0}; })
+      .sort((a,b) => b.base - a.base).slice(0, 6);
+    const stateBase = (() => { let dv = 0, rv = 0, tv = 0; for (const c of base) { const d = c.candidates.find(x => x.candidatePartyCode === 'D'), q = c.candidates.find(x => x.candidatePartyCode === 'R'); if (d && q) { dv += d.voteNum; rv += q.voteNum; tv += +c.totalVote||0; } } return tv ? (dv - rv) / tv * 100 : null; })();
+    const fm = x => x == null ? '—' : (x >= 0 ? (r.i ? 'I +' : 'D +') : 'R +') + Math.abs(x).toFixed(1);
+    html += `<div class="cty"><h4>${esc(r.name)} Senate · ${chalName} vs ${esc(p.rName)} (R)</h4><div class="sub">Statewide: ${Math.round(countIn('S', r.st)||0)}% in · 2024 presidential margin ${fm(stateBase)} · Democrats need a swing of about ${stateBase == null ? '—' : Math.max(0, -stateBase).toFixed(1)} points statewide.</div>
+      <div class="tablewrap"><table><thead><tr><th>County</th><th class="n">% in</th><th class="n">2026 margin</th><th class="n">2024 margin</th><th class="n">Swing</th></tr></thead><tbody>` +
+      rows.map(x => { const sw = (x.m != null && x.b != null) ? x.m - x.b : null; return `<tr><td>${esc(x.name)}</td><td class="n">${x.pin}%</td><td class="n ${x.m==null?'':x.m>=0?'D':'R'}">${fm(x.m)}</td><td class="n">${fm(x.b)}</td><td class="n ${sw==null?'':sw>0?'up':'dn'}">${sw == null ? '—' : (sw >= 0 ? '+' : '') + sw.toFixed(1)}</td></tr>`; }).join('') + `</tbody></table></div></div>`;
+  }
+  $('#county').innerHTML = html;
+}
+// ---- competitive House ----
+function renderHouseComp() {
+  const order = {'tossup':0, 'lean-dem':1, 'lean-rep':1}; const ratingLabel = {'tossup':'Toss-up', 'lean-dem':'Lean D', 'lean-rep':'Lean R'};
+  const rows = HOUSE_COMP.map(h => ({h, res: RES.H[h.key]})).sort((a,b) => (order[a.h.rating] - order[b.h.rating]) || a.h.st.localeCompare(b.h.st) || (+a.h.seat - +b.h.seat));
+  let dLead = 0, rLead = 0, dCalled = 0, rCalled = 0, closed = 0;
+  const fm = x => x == null ? '—' : (x >= 0 ? 'D +' : 'R +') + Math.abs(x).toFixed(1);
+  $('#house-comp tbody').innerHTML = rows.map(({h, res}) => {
+    const c = h.key.split('-'); const close = res && res.closeAt ? new Date(res.closeAt).toLocaleTimeString('en-US', {timeZone:'America/New_York', hour:'numeric', minute:'2-digit'}) + ' ET' : '—';
+    let pin = '', margin = '', status = '', cls = '';
+    if (res && res.closed) { closed++; const d = res.cands.find(x => x.party === 'D'), q = res.cands.find(x => x.party === 'R'); const m = d && q && res.total ? d.pct - q.pct : null;
+      pin = `${Math.round(res.pct)}%<span class="pbar"><i style="width:${res.pct}%"></i></span>`; margin = res.total ? fm(m) : '—';
+      if (res.called && res.winner) { status = `<span class="pill called">CALLED ${res.winner.party}</span>`; cls = 'called'; if (res.winner.party === 'D') dCalled++; else if (res.winner.party === 'R') rCalled++; }
+      else if (res.runoff) status = `<span class="pill hold">RUNOFF</span>`; else if (m != null && res.total) { if (m >= 0) dLead++; else rLead++; status = `<span class="pill hold">${m >= 0 ? 'D' : 'R'} leads</span>`; }
+    } else { pin = '<span style="color:var(--ink-3)">open</span>'; }
+    const flipNote = res && res.called && res.winner && h.incParty && res.winner.party !== h.incParty ? ` <span class="pill flip${res.winner.party==='D'?'D':'R'}">FLIP</span>` : '';
+    return `<tr class="${cls}"><td class="dname">${h.st}-${h.seat}</td><td>${esc(h.d||'—')} (D) vs ${esc(h.r||'—')} (R)${h.incParty ? ` <span class="pill ${h.incParty}">${h.incParty} inc</span>` : ' <span class="pill hold">open</span>'}</td><td class="rt">${ratingLabel[h.rating]||h.rating}</td><td class="m n">${fm(h.m24)}</td><td class="m">${close}</td><td class="m">${pin}</td><td class="m">${margin}</td><td>${status}${flipNote}</td></tr>`;
+  }).join('');
+  $('#hc-summary').innerHTML = `Of 54 competitive seats: <b class="num">${closed}</b> have closed polls · leading now <b class="num D">D ${dLead}</b> / <b class="num R">R ${rLead}</b> · called <b class="num D">D ${dCalled}</b> / <b class="num R">R ${rCalled}</b>. Incumbents: 30 R, 9 D, 15 open.${RES.hAt ? ` Updated ${fmtTime(RES.hAt)}.` : ''}`;
+}
+function nytLine(key, st) {
+  const ny = NY[key][st]; if (!ny) return '';
+  let out = '';
+  if (ny.eevp != null && ny.expected) out += `NYT/AP: <b>${Math.round(ny.eevp)}%</b> of ~${(ny.expected/1e6).toFixed(2)}M expected votes in`;
+  const e = ny.est; if (e && typeof e === 'object') {
+    const leaves = []; (function walk(o, path) { for (const k in o) { const v = o[k]; if (typeof v === 'number') leaves.push([path.concat(k).join('.'), v]); else if (v && typeof v === 'object' && leaves.length < 12) walk(v, path.concat(k)); } })(e, []);
+    const pick = leaves.filter(([k]) => /margin|dem|rep|pct|lower|upper|mean|estimate/i.test(k)).slice(0, 4);
+    if (pick.length) out += (out ? ' · ' : '') + 'NYT estimate: ' + pick.map(([k, v]) => `${k.split('.').slice(-2).join(' ')} ${(+v).toFixed(1)}`).join(', ');
+  }
+  return out ? `<div class="line nyt"><span>${out}</span></div>` : '';
 }
 function raceCard(r, p, k, key) {
   const fav = p.d == null ? null : (p.i && p.i > p.d && p.i > p.r ? 'I' : p.d >= p.r ? 'D' : 'R');
   const badge = !fav ? '' : fav !== r.hold ? `<span class="pill flip${fav==='I'?'D':fav}">FLIP → ${fav==='I'?'IND':fav}</span>` : `<span class="pill hold">${r.hold} holds</span>`;
   const third = r.i ? `<div class="foot"><span>${(p.d == null || (p.i||0) > p.d) ? `Democrat ${esc(p.dName)}: ${pct(p.d)}` : `Independent ${esc(r.iName)}: ${pct(p.i)}`}${k && k.i != null ? ` · Kalshi has ${esc(r.iName)} at ${pct(k.i)}` : ''}</span></div>` : '';
-  return `<div class="card"><div class="top"><div class="st">${r.st}<small>${esc(r.name)}${r.open?' · open seat':''}</small></div>${badge}</div>
+  const dv = DIV.find(x => x.key === key && x.r === r);
+  return `<div class="card${dv ? ' diverge' : ''}"><div class="top"><div class="st">${r.st}<small>${esc(r.name)}${r.open?' · open seat':''}</small></div>${badge}</div>
     <div class="duel">${r.i && (p.d == null || (p.i||0) > p.d) ? `<div class="cand"><div class="n">${esc(r.iName)}</div><div class="party">Independent</div><div class="pct I">${pct(p.i)}</div></div>` : `<div class="cand"><div class="n">${esc(p.dName)}</div><div class="party">Democrat</div><div class="pct D">${pct(p.d)}</div></div>`}<div></div>
     <div class="cand r"><div class="n">${esc(p.rName)}</div><div class="party">Republican</div><div class="pct R">${pct(p.r)}</div></div></div>
     <div class="track"><i class="d" style="width:${(p.d||0)*100}%"></i>${p.i?`<i class="i" style="width:${p.i*100}%"></i>`:''}<i class="r" style="width:${(p.r||0)*100}%"></i></div>
@@ -643,7 +882,9 @@ function renderAll() {
   try {
     renderControl();
     const senDist = spliceDistribution(CONTROL.senSeats, CONTROL.senSeatsLow), houDist = spliceDistribution(CONTROL.houseSeats, CONTROL.houseSeatsLow);
-    renderTimeline(); renderTally();
+    DIV = divergences(); detectEvents();
+    renderOddsChart(); renderMovers(); renderDiverge(DIV); renderEvents();
+    renderTimeline(); renderTally(); renderCounty(); renderHouseComp();
     const senRows = renderRaces(SENATE_RACES, '#cards-senate', '#chips-senate', 12, 'S');
     const govRows = renderRaces(GOV_RACES, '#cards-gov', '#chips-gov', 9, 'G');
     seatBar('#bar-senate', 'Senate · 100 seats · Democrats need 51 (Republicans keep control at 50 with the VP tiebreak)', senRows, SENATE_FLOOR, 100, 51);
@@ -678,7 +919,9 @@ function setStatus() {
   $('#st-k').innerHTML = `<span class="dot ${kAge == null ? 'err' : kAge > 30 ? 'stale' : ''}"></span>Kalshi: ${kAge == null ? 'no feed yet' : 'as of ' + fmtTime(KAL.fetched_at) + (kAge > 30 ? ` (${Math.round(kAge)} min old)` : '')}`;
 }
 async function refresh(full) {
-  try { await Promise.all([fetchPolymarket(), fetchResults(), full ? fetchHistory() : null, full ? fetchKalshi() : null]); }
+  try { await Promise.all([fetchPolymarket(), fetchResults(), full ? fetchHistory() : null, full ? fetchKalshi() : null, full ? fetchNYT() : null, (full || !RES.hAt || Date.now() - new Date(RES.hAt) > 110000) ? fetchHouse() : null]); }
+  catch (e) { $('#debug').textContent = 'Fetch error: ' + e.message; }
+  try { if (full) { await fetchMovers(); await fetchCounties(); } }
   catch (e) { $('#debug').textContent = 'Fetch error: ' + e.message; }
   setStatus(); renderAll();
 }
@@ -687,6 +930,13 @@ document.addEventListener('mousemove', e => {
   if (t) { tip.textContent = t.getAttribute('data-tip'); tip.style.display = 'block'; tip.style.left = (e.clientX + 12) + 'px'; tip.style.top = (e.clientY + 12) + 'px'; } else tip.style.display = 'none';
 });
 $('#refresh').addEventListener('click', () => refresh(true));
+$('#alerts').addEventListener('click', async () => {
+  if (!('Notification' in window)) { $('#alerts').textContent = 'Not supported here'; return; }
+  if (alertsOn()) { try { localStorage.setItem('mt_alerts', '0'); } catch (e) {} renderEvents(); return; }
+  const perm = await Notification.requestPermission();
+  if (perm === 'granted') { try { localStorage.setItem('mt_alerts', '1'); } catch (e) {} logEvent('Alerts enabled. You will get a notification for each AP call and big odds move while this tab stays open.', 'info'); }
+  renderEvents();
+});
 setInterval(() => $('#clock').textContent = new Date().toLocaleTimeString('en-US', {timeZone:'America/New_York', hour:'numeric', minute:'2-digit'}) + ' ET', 1000);
 refresh(true);
 setInterval(() => refresh(false), 60000);

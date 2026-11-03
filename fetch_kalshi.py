@@ -81,4 +81,18 @@ for ev in EVENTS:
 
 out["fetched_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
 json.dump(out, open(OUT, "w"), indent=1)
+
+# Rolling history of mid prices (one row per run) so the page can show Kalshi movers.
+HIST = OUT.replace("kalshi.json", "kalshi_history.json")
+try:
+    hist = json.load(open(HIST))
+except Exception:
+    hist = {"rows": []}
+row = {"t": out["fetched_at"], "p": {}}
+for ev, data in out["events"].items():
+    for m in data["markets"]:
+        if m.get("mid") is not None:
+            row["p"][m["ticker"]] = m["mid"]
+hist["rows"] = (hist.get("rows", []) + [row])[-400:]
+json.dump(hist, open(HIST, "w"), separators=(",", ":"))
 print(f"wrote {OUT} with {len(out['events'])} events")
