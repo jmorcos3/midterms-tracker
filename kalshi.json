@@ -1,9 +1,9 @@
 {
  "source": "Kalshi public API",
- "fetched_at": "2026-11-04T19:59:22+00:00",
+ "fetched_at": "2026-11-04T20:13:04+00:00",
  "events": {
   "CONTROLS-2026": {
-   "updated_at": "2026-11-04T19:55:48+00:00",
+   "updated_at": "2026-11-04T20:09:29+00:00",
    "markets": [
     {
      "ticker": "CONTROLS-2026-R",
@@ -28,7 +28,7 @@
    ]
   },
   "CONTROLH-2026": {
-   "updated_at": "2026-11-04T19:55:54+00:00",
+   "updated_at": "2026-11-04T20:09:36+00:00",
    "markets": [
     {
      "ticker": "CONTROLH-2026-D",
@@ -53,7 +53,7 @@
    ]
   },
   "KXBALANCEPOWERCOMBO-27FEB": {
-   "updated_at": "2026-11-04T19:56:00+00:00",
+   "updated_at": "2026-11-04T20:09:42+00:00",
    "markets": [
     {
      "ticker": "KXBALANCEPOWERCOMBO-27FEB-DD",
@@ -98,7 +98,7 @@
    ]
   },
   "SENATETX-26": {
-   "updated_at": "2026-11-04T19:56:07+00:00",
+   "updated_at": "2026-11-04T20:09:48+00:00",
    "markets": [
     {
      "ticker": "SENATETX-26-D",
@@ -123,7 +123,7 @@
    ]
   },
   "SENATEME-26": {
-   "updated_at": "2026-11-04T19:56:13+00:00",
+   "updated_at": "2026-11-04T20:09:54+00:00",
    "markets": [
     {
      "ticker": "SENATEME-26-R",
@@ -148,7 +148,7 @@
    ]
   },
   "SENATEOHS-26": {
-   "updated_at": "2026-11-04T19:56:19+00:00",
+   "updated_at": "2026-11-04T20:10:00+00:00",
    "markets": [
     {
      "ticker": "SENATEOHS-26-R",
@@ -173,7 +173,7 @@
    ]
   },
   "SENATENC-26": {
-   "updated_at": "2026-11-04T19:56:25+00:00",
+   "updated_at": "2026-11-04T20:10:06+00:00",
    "markets": [
     {
      "ticker": "SENATENC-26-R",
@@ -198,7 +198,7 @@
    ]
   },
   "SENATEIA-26": {
-   "updated_at": "2026-11-04T19:56:31+00:00",
+   "updated_at": "2026-11-04T20:10:12+00:00",
    "markets": [
     {
      "ticker": "SENATEIA-26-D",
@@ -223,32 +223,32 @@
    ]
   },
   "SENATEAK-26": {
-   "updated_at": "2026-11-04T19:56:37+00:00",
+   "updated_at": "2026-11-04T20:10:18+00:00",
    "markets": [
-    {
-     "ticker": "SENATEAK-26-R",
-     "label": "Republican party",
-     "mid": 0.0895,
-     "last": 0.089,
-     "bid": 0.089,
-     "ask": 0.09,
-     "volume": 8190461.75,
-     "status": "active"
-    },
     {
      "ticker": "SENATEAK-26-D",
      "label": "Democratic party",
-     "mid": 0.9095,
-     "last": 0.91,
-     "bid": 0.909,
-     "ask": 0.91,
-     "volume": 6878760.99,
+     "mid": 0.902,
+     "last": 0.901,
+     "bid": 0.901,
+     "ask": 0.903,
+     "volume": 6893502.94,
+     "status": "active"
+    },
+    {
+     "ticker": "SENATEAK-26-R",
+     "label": "Republican party",
+     "mid": 0.099,
+     "last": 0.098,
+     "bid": 0.098,
+     "ask": 0.1,
+     "volume": 8332887.13,
      "status": "active"
     }
    ]
   },
   "SENATEKS-26": {
-   "updated_at": "2026-11-04T19:56:43+00:00",
+   "updated_at": "2026-11-04T20:10:24+00:00",
    "markets": [
     {
      "ticker": "SENATEKS-26-R",
@@ -273,7 +273,7 @@
    ]
   },
   "SENATENE-26": {
-   "updated_at": "2026-11-04T19:56:49+00:00",
+   "updated_at": "2026-11-04T20:10:31+00:00",
    "markets": [
     {
      "ticker": "SENATENE-26-DOSB",
@@ -308,7 +308,7 @@
    ]
   },
   "SENATESC-26": {
-   "updated_at": "2026-11-04T19:56:55+00:00",
+   "updated_at": "2026-11-04T20:10:37+00:00",
    "markets": [
     {
      "ticker": "SENATESC-26-R",
@@ -333,7 +333,7 @@
    ]
   },
   "SENATEMI-26": {
-   "updated_at": "2026-11-04T19:57:01+00:00",
+   "updated_at": "2026-11-04T20:10:43+00:00",
    "markets": [
     {
      "ticker": "SENATEMI-26-R",
@@ -358,7 +358,7 @@
    ]
   },
   "SENATEGA-26": {
-   "updated_at": "2026-11-04T19:57:07+00:00",
+   "updated_at": "2026-11-04T20:10:49+00:00",
    "markets": [
     {
      "ticker": "SENATEGA-26-R",
@@ -383,7 +383,7 @@
    ]
   },
   "SENATENH-26": {
-   "updated_at": "2026-11-04T19:57:14+00:00",
+   "updated_at": "2026-11-04T20:10:55+00:00",
    "markets": [
     {
      "ticker": "SENATENH-26-R",
@@ -408,7 +408,7 @@
    ]
   },
   "SENATEMN-26": {
-   "updated_at": "2026-11-04T19:57:20+00:00",
+   "updated_at": "2026-11-04T20:11:01+00:00",
    "markets": [
     {
      "ticker": "SENATEMN-26-R",
@@ -433,32 +433,32 @@
    ]
   },
   "SENATEMS-26": {
-   "updated_at": "2026-11-04T19:57:32+00:00",
+   "updated_at": "2026-11-04T20:11:13+00:00",
    "markets": [
+    {
+     "ticker": "SENATEMS-26-D",
+     "label": "Scott Colom",
+     "mid": 0.9255,
+     "last": 0.926,
+     "bid": 0.925,
+     "ask": 0.926,
+     "volume": 12148984.17,
+     "status": "active"
+    },
     {
      "ticker": "SENATEMS-26-R",
      "label": "Cindy Hyde-Smith",
      "mid": 0.0745,
-     "last": 0.077,
-     "bid": 0.072,
-     "ask": 0.077,
-     "volume": 11088973.59,
-     "status": "active"
-    },
-    {
-     "ticker": "SENATEMS-26-D",
-     "label": "Scott Colom",
-     "mid": 0.926,
-     "last": 0.925,
-     "bid": 0.925,
-     "ask": 0.927,
-     "volume": 12122849.39,
+     "last": 0.076,
+     "bid": 0.073,
+     "ask": 0.076,
+     "volume": 11177133.68,
      "status": "active"
     }
    ]
   },
   "SENATELA-26": {
-   "updated_at": "2026-11-04T19:57:38+00:00",
+   "updated_at": "2026-11-04T20:11:20+00:00",
    "markets": [
     {
      "ticker": "SENATELA-26-R",
@@ -483,7 +483,7 @@
    ]
   },
   "SENATEMT-26": {
-   "updated_at": "2026-11-04T19:57:44+00:00",
+   "updated_at": "2026-11-04T20:11:26+00:00",
    "markets": [
     {
      "ticker": "SENATEMT-26-D",
@@ -518,7 +518,7 @@
    ]
   },
   "GOVPARTYGA-26": {
-   "updated_at": "2026-11-04T19:57:50+00:00",
+   "updated_at": "2026-11-04T20:11:32+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYGA-26-D",
@@ -543,7 +543,7 @@
    ]
   },
   "GOVPARTYNV-26": {
-   "updated_at": "2026-11-04T19:58:02+00:00",
+   "updated_at": "2026-11-04T20:11:44+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYNV-26-R",
@@ -568,7 +568,7 @@
    ]
   },
   "GOVPARTYFL-26": {
-   "updated_at": "2026-11-04T19:58:08+00:00",
+   "updated_at": "2026-11-04T20:11:50+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYFL-26-D",
@@ -593,7 +593,7 @@
    ]
   },
   "GOVPARTYTX-26": {
-   "updated_at": "2026-11-04T19:58:15+00:00",
+   "updated_at": "2026-11-04T20:11:56+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYTX-26-R",
@@ -618,7 +618,7 @@
    ]
   },
   "GOVPARTYVT-26": {
-   "updated_at": "2026-11-04T19:58:21+00:00",
+   "updated_at": "2026-11-04T20:12:02+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYVT-26-R",
@@ -643,18 +643,8 @@
    ]
   },
   "GOVPARTYOH-26": {
-   "updated_at": "2026-11-04T19:58:33+00:00",
+   "updated_at": "2026-11-04T20:12:15+00:00",
    "markets": [
-    {
-     "ticker": "GOVPARTYOH-26-R",
-     "label": "Vivek Ramaswamy",
-     "mid": 0.5,
-     "last": 0.002,
-     "bid": 0.0,
-     "ask": 1.0,
-     "volume": 12696475.63,
-     "status": "finalized"
-    },
     {
      "ticker": "GOVPARTYOH-26-D",
      "label": "Amy Acton",
@@ -664,11 +654,21 @@
      "ask": 1.0,
      "volume": 4956811.96,
      "status": "finalized"
+    },
+    {
+     "ticker": "GOVPARTYOH-26-R",
+     "label": "Vivek Ramaswamy",
+     "mid": 0.5,
+     "last": 0.002,
+     "bid": 0.0,
+     "ask": 1.0,
+     "volume": 12696475.63,
+     "status": "finalized"
     }
    ]
   },
   "GOVPARTYIA-26": {
-   "updated_at": "2026-11-04T19:58:39+00:00",
+   "updated_at": "2026-11-04T20:12:21+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYIA-26-R",
@@ -693,7 +693,7 @@
    ]
   },
   "GOVPARTYWI-26": {
-   "updated_at": "2026-11-04T19:58:45+00:00",
+   "updated_at": "2026-11-04T20:12:27+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYWI-26-R",
@@ -718,7 +718,7 @@
    ]
   },
   "GOVPARTYAZ-26": {
-   "updated_at": "2026-11-04T19:58:51+00:00",
+   "updated_at": "2026-11-04T20:12:33+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYAZ-26-D",
@@ -743,7 +743,7 @@
    ]
   },
   "GOVPARTYMI-26": {
-   "updated_at": "2026-11-04T19:58:57+00:00",
+   "updated_at": "2026-11-04T20:12:40+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYMI-26-R",
@@ -778,7 +778,7 @@
    ]
   },
   "GOVPARTYOR-26": {
-   "updated_at": "2026-11-04T19:59:03+00:00",
+   "updated_at": "2026-11-04T20:12:46+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYOR-26-R",
@@ -803,7 +803,7 @@
    ]
   },
   "GOVPARTYNE-26": {
-   "updated_at": "2026-11-04T19:59:16+00:00",
+   "updated_at": "2026-11-04T20:12:58+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYNE-26-R",
@@ -828,7 +828,7 @@
    ]
   },
   "GOVPARTYOK-26": {
-   "updated_at": "2026-11-04T19:59:22+00:00",
+   "updated_at": "2026-11-04T20:13:04+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYOK-26-D",
