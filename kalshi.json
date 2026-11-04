@@ -1,9 +1,9 @@
 {
  "source": "Kalshi public API",
- "fetched_at": "2026-11-04T07:35:17+00:00",
+ "fetched_at": "2026-11-04T07:48:59+00:00",
  "events": {
   "CONTROLS-2026": {
-   "updated_at": "2026-11-04T07:31:43+00:00",
+   "updated_at": "2026-11-04T07:45:25+00:00",
    "markets": [
     {
      "ticker": "CONTROLS-2026-R",
@@ -28,7 +28,7 @@
    ]
   },
   "CONTROLH-2026": {
-   "updated_at": "2026-11-04T07:31:49+00:00",
+   "updated_at": "2026-11-04T07:45:31+00:00",
    "markets": [
     {
      "ticker": "CONTROLH-2026-R",
@@ -53,7 +53,7 @@
    ]
   },
   "KXBALANCEPOWERCOMBO-27FEB": {
-   "updated_at": "2026-11-04T07:31:55+00:00",
+   "updated_at": "2026-11-04T07:45:37+00:00",
    "markets": [
     {
      "ticker": "KXBALANCEPOWERCOMBO-27FEB-DD",
@@ -98,7 +98,7 @@
    ]
   },
   "SENATETX-26": {
-   "updated_at": "2026-11-04T07:32:02+00:00",
+   "updated_at": "2026-11-04T07:45:44+00:00",
    "markets": [
     {
      "ticker": "SENATETX-26-D",
@@ -123,7 +123,7 @@
    ]
   },
   "SENATEME-26": {
-   "updated_at": "2026-11-04T07:32:08+00:00",
+   "updated_at": "2026-11-04T07:45:50+00:00",
    "markets": [
     {
      "ticker": "SENATEME-26-R",
@@ -148,7 +148,7 @@
    ]
   },
   "SENATEOHS-26": {
-   "updated_at": "2026-11-04T07:32:14+00:00",
+   "updated_at": "2026-11-04T07:45:56+00:00",
    "markets": [
     {
      "ticker": "SENATEOHS-26-D",
@@ -173,7 +173,7 @@
    ]
   },
   "SENATENC-26": {
-   "updated_at": "2026-11-04T07:32:20+00:00",
+   "updated_at": "2026-11-04T07:46:02+00:00",
    "markets": [
     {
      "ticker": "SENATENC-26-R",
@@ -198,7 +198,7 @@
    ]
   },
   "SENATEIA-26": {
-   "updated_at": "2026-11-04T07:32:26+00:00",
+   "updated_at": "2026-11-04T07:46:08+00:00",
    "markets": [
     {
      "ticker": "SENATEIA-26-R",
@@ -223,32 +223,32 @@
    ]
   },
   "SENATEAK-26": {
-   "updated_at": "2026-11-04T07:32:32+00:00",
+   "updated_at": "2026-11-04T07:46:14+00:00",
    "markets": [
-    {
-     "ticker": "SENATEAK-26-D",
-     "label": "Democratic party",
-     "mid": 0.785,
-     "last": 0.78,
-     "bid": 0.78,
-     "ask": 0.79,
-     "volume": 5059513.87,
-     "status": "active"
-    },
     {
      "ticker": "SENATEAK-26-R",
      "label": "Republican party",
-     "mid": 0.215,
-     "last": 0.22,
-     "bid": 0.21,
-     "ask": 0.22,
-     "volume": 6184782.65,
+     "mid": 0.195,
+     "last": 0.2,
+     "bid": 0.19,
+     "ask": 0.2,
+     "volume": 6330098.36,
+     "status": "active"
+    },
+    {
+     "ticker": "SENATEAK-26-D",
+     "label": "Democratic party",
+     "mid": 0.795,
+     "last": 0.8,
+     "bid": 0.79,
+     "ask": 0.8,
+     "volume": 5292112.45,
      "status": "active"
     }
    ]
   },
   "SENATEKS-26": {
-   "updated_at": "2026-11-04T07:32:38+00:00",
+   "updated_at": "2026-11-04T07:46:20+00:00",
    "markets": [
     {
      "ticker": "SENATEKS-26-R",
@@ -273,53 +273,43 @@
    ]
   },
   "SENATENE-26": {
-   "updated_at": "2026-11-04T07:32:45+00:00",
+   "updated_at": "2026-11-04T07:46:26+00:00",
    "markets": [
     {
      "ticker": "SENATENE-26-DOSB",
      "label": "Dan Osborn",
-     "mid": 0.0035,
+     "mid": 0.005,
      "last": 0.003,
-     "bid": 0.003,
-     "ask": 0.004,
-     "volume": 9728978.04,
+     "bid": 0.004,
+     "ask": 0.006,
+     "volume": 9776406.6,
      "status": "active"
     },
     {
      "ticker": "SENATENE-26-R",
      "label": "Pete Ricketts",
-     "mid": 0.9955,
-     "last": 0.993,
-     "bid": 0.993,
+     "mid": 0.995,
+     "last": 0.991,
+     "bid": 0.992,
      "ask": 0.998,
-     "volume": 7064633.31,
+     "volume": 7077161.64,
      "status": "active"
     },
     {
      "ticker": "SENATENE-26-D",
      "label": "Cindy Burbank",
-     "mid": 0.0005,
-     "last": 0.001,
+     "mid": 0.001,
+     "last": 0.002,
      "bid": 0.0,
-     "ask": 0.001,
-     "volume": 1087345.81,
+     "ask": 0.002,
+     "volume": 1136956.23,
      "status": "active"
     }
    ]
   },
   "SENATESC-26": {
-   "updated_at": "2026-11-04T07:32:51+00:00",
+   "updated_at": "2026-11-04T07:46:32+00:00",
    "markets": [
-    {
-     "ticker": "SENATESC-26-R",
-     "label": "Darline Graham",
-     "mid": 0.5,
-     "last": 0.002,
-     "bid": 0.0,
-     "ask": 1.0,
-     "volume": 11109455.53,
-     "status": "finalized"
-    },
     {
      "ticker": "SENATESC-26-D",
      "label": "Annie Andrews",
@@ -329,47 +319,47 @@
      "ask": 1.0,
      "volume": 10929968.03,
      "status": "finalized"
+    },
+    {
+     "ticker": "SENATESC-26-R",
+     "label": "Darline Graham",
+     "mid": 0.5,
+     "last": 0.002,
+     "bid": 0.0,
+     "ask": 1.0,
+     "volume": 11109455.53,
+     "status": "finalized"
     }
    ]
   },
   "SENATEMI-26": {
-   "updated_at": "2026-11-04T07:32:57+00:00",
+   "updated_at": "2026-11-04T07:46:39+00:00",
    "markets": [
-    {
-     "ticker": "SENATEMI-26-R",
-     "label": "Mike Rogers",
-     "mid": 0.0005,
-     "last": 0.001,
-     "bid": 0.0,
-     "ask": 0.001,
-     "volume": 60389591.66,
-     "status": "active"
-    },
     {
      "ticker": "SENATEMI-26-D",
      "label": "Abdul El-Sayed",
-     "mid": 0.9995,
+     "mid": 0.5,
      "last": 0.999,
-     "bid": 0.999,
+     "bid": 0.0,
      "ask": 1.0,
-     "volume": 20732053.41,
-     "status": "active"
+     "volume": 20732276.8,
+     "status": "determined"
+    },
+    {
+     "ticker": "SENATEMI-26-R",
+     "label": "Mike Rogers",
+     "mid": 0.5,
+     "last": 0.001,
+     "bid": 0.0,
+     "ask": 1.0,
+     "volume": 60389591.66,
+     "status": "determined"
     }
    ]
   },
   "SENATEGA-26": {
-   "updated_at": "2026-11-04T07:33:03+00:00",
+   "updated_at": "2026-11-04T07:46:45+00:00",
    "markets": [
-    {
-     "ticker": "SENATEGA-26-D",
-     "label": "Jon Ossoff",
-     "mid": 0.5,
-     "last": 0.998,
-     "bid": 0.0,
-     "ask": 1.0,
-     "volume": 1981463.69,
-     "status": "finalized"
-    },
     {
      "ticker": "SENATEGA-26-R",
      "label": "Mike Collins",
@@ -379,11 +369,21 @@
      "ask": 1.0,
      "volume": 5336090.52,
      "status": "finalized"
+    },
+    {
+     "ticker": "SENATEGA-26-D",
+     "label": "Jon Ossoff",
+     "mid": 0.5,
+     "last": 0.998,
+     "bid": 0.0,
+     "ask": 1.0,
+     "volume": 1981463.69,
+     "status": "finalized"
     }
    ]
   },
   "SENATENH-26": {
-   "updated_at": "2026-11-04T07:33:09+00:00",
+   "updated_at": "2026-11-04T07:46:51+00:00",
    "markets": [
     {
      "ticker": "SENATENH-26-R",
@@ -408,18 +408,8 @@
    ]
   },
   "SENATEMN-26": {
-   "updated_at": "2026-11-04T07:33:15+00:00",
+   "updated_at": "2026-11-04T07:46:57+00:00",
    "markets": [
-    {
-     "ticker": "SENATEMN-26-R",
-     "label": "Michele Tafoya",
-     "mid": 0.5,
-     "last": 0.001,
-     "bid": 0.0,
-     "ask": 1.0,
-     "volume": 12866796.14,
-     "status": "finalized"
-    },
     {
      "ticker": "SENATEMN-26-D",
      "label": "Peggy Flanagan",
@@ -429,36 +419,46 @@
      "ask": 1.0,
      "volume": 3851324.6,
      "status": "finalized"
+    },
+    {
+     "ticker": "SENATEMN-26-R",
+     "label": "Michele Tafoya",
+     "mid": 0.5,
+     "last": 0.001,
+     "bid": 0.0,
+     "ask": 1.0,
+     "volume": 12866796.14,
+     "status": "finalized"
     }
    ]
   },
   "SENATEMS-26": {
-   "updated_at": "2026-11-04T07:33:28+00:00",
+   "updated_at": "2026-11-04T07:47:09+00:00",
    "markets": [
-    {
-     "ticker": "SENATEMS-26-D",
-     "label": "Scott Colom",
-     "mid": 0.755,
-     "last": 0.75,
-     "bid": 0.75,
-     "ask": 0.76,
-     "volume": 9771592.76,
-     "status": "active"
-    },
     {
      "ticker": "SENATEMS-26-R",
      "label": "Cindy Hyde-Smith",
-     "mid": 0.24,
+     "mid": 0.245,
      "last": 0.25,
-     "bid": 0.23,
+     "bid": 0.24,
      "ask": 0.25,
-     "volume": 8292307.49,
+     "volume": 8328837.88,
+     "status": "active"
+    },
+    {
+     "ticker": "SENATEMS-26-D",
+     "label": "Scott Colom",
+     "mid": 0.76,
+     "last": 0.77,
+     "bid": 0.75,
+     "ask": 0.77,
+     "volume": 9808001.66,
      "status": "active"
     }
    ]
   },
   "SENATELA-26": {
-   "updated_at": "2026-11-04T07:33:34+00:00",
+   "updated_at": "2026-11-04T07:47:15+00:00",
    "markets": [
     {
      "ticker": "SENATELA-26-D",
@@ -483,7 +483,7 @@
    ]
   },
   "SENATEMT-26": {
-   "updated_at": "2026-11-04T07:33:40+00:00",
+   "updated_at": "2026-11-04T07:47:21+00:00",
    "markets": [
     {
      "ticker": "SENATEMT-26-IND",
@@ -492,7 +492,7 @@
      "last": 0.001,
      "bid": 0.0,
      "ask": 0.001,
-     "volume": 1249115.46,
+     "volume": 1259200.2,
      "status": "active"
     },
     {
@@ -512,13 +512,13 @@
      "last": 0.999,
      "bid": 0.999,
      "ask": 1.0,
-     "volume": 1370333.67,
+     "volume": 1371249.66,
      "status": "active"
     }
    ]
   },
   "GOVPARTYGA-26": {
-   "updated_at": "2026-11-04T07:33:46+00:00",
+   "updated_at": "2026-11-04T07:47:27+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYGA-26-R",
@@ -543,32 +543,32 @@
    ]
   },
   "GOVPARTYNV-26": {
-   "updated_at": "2026-11-04T07:33:58+00:00",
+   "updated_at": "2026-11-04T07:47:40+00:00",
    "markets": [
-    {
-     "ticker": "GOVPARTYNV-26-D",
-     "label": "Aaron Ford",
-     "mid": 0.986,
-     "last": 0.989,
-     "bid": 0.984,
-     "ask": 0.988,
-     "volume": 3282418.97,
-     "status": "active"
-    },
     {
      "ticker": "GOVPARTYNV-26-R",
      "label": "Joe Lombardo",
-     "mid": 0.0155,
-     "last": 0.019,
-     "bid": 0.013,
-     "ask": 0.018,
-     "volume": 3026589.14,
+     "mid": 0.0165,
+     "last": 0.02,
+     "bid": 0.016,
+     "ask": 0.017,
+     "volume": 3065185.53,
+     "status": "active"
+    },
+    {
+     "ticker": "GOVPARTYNV-26-D",
+     "label": "Aaron Ford",
+     "mid": 0.9855,
+     "last": 0.988,
+     "bid": 0.985,
+     "ask": 0.986,
+     "volume": 3293270.81,
      "status": "active"
     }
    ]
   },
   "GOVPARTYFL-26": {
-   "updated_at": "2026-11-04T07:34:04+00:00",
+   "updated_at": "2026-11-04T07:47:46+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYFL-26-D",
@@ -593,7 +593,7 @@
    ]
   },
   "GOVPARTYTX-26": {
-   "updated_at": "2026-11-04T07:34:10+00:00",
+   "updated_at": "2026-11-04T07:47:52+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYTX-26-R",
@@ -618,7 +618,7 @@
    ]
   },
   "GOVPARTYVT-26": {
-   "updated_at": "2026-11-04T07:34:16+00:00",
+   "updated_at": "2026-11-04T07:47:58+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYVT-26-R",
@@ -643,18 +643,8 @@
    ]
   },
   "GOVPARTYOH-26": {
-   "updated_at": "2026-11-04T07:34:29+00:00",
+   "updated_at": "2026-11-04T07:48:10+00:00",
    "markets": [
-    {
-     "ticker": "GOVPARTYOH-26-D",
-     "label": "Amy Acton",
-     "mid": 0.5,
-     "last": 0.998,
-     "bid": 0.0,
-     "ask": 1.0,
-     "volume": 4956811.96,
-     "status": "finalized"
-    },
     {
      "ticker": "GOVPARTYOH-26-R",
      "label": "Vivek Ramaswamy",
@@ -664,22 +654,22 @@
      "ask": 1.0,
      "volume": 12696475.63,
      "status": "finalized"
+    },
+    {
+     "ticker": "GOVPARTYOH-26-D",
+     "label": "Amy Acton",
+     "mid": 0.5,
+     "last": 0.998,
+     "bid": 0.0,
+     "ask": 1.0,
+     "volume": 4956811.96,
+     "status": "finalized"
     }
    ]
   },
   "GOVPARTYIA-26": {
-   "updated_at": "2026-11-04T07:34:35+00:00",
+   "updated_at": "2026-11-04T07:48:16+00:00",
    "markets": [
-    {
-     "ticker": "GOVPARTYIA-26-R",
-     "label": "Zach Lahn",
-     "mid": 0.5,
-     "last": 0.004,
-     "bid": 0.0,
-     "ask": 1.0,
-     "volume": 3961033.34,
-     "status": "finalized"
-    },
     {
      "ticker": "GOVPARTYIA-26-D",
      "label": "Rob Sand",
@@ -689,11 +679,21 @@
      "ask": 1.0,
      "volume": 1646644.95,
      "status": "finalized"
+    },
+    {
+     "ticker": "GOVPARTYIA-26-R",
+     "label": "Zach Lahn",
+     "mid": 0.5,
+     "last": 0.004,
+     "bid": 0.0,
+     "ask": 1.0,
+     "volume": 3961033.34,
+     "status": "finalized"
     }
    ]
   },
   "GOVPARTYWI-26": {
-   "updated_at": "2026-11-04T07:34:41+00:00",
+   "updated_at": "2026-11-04T07:48:22+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYWI-26-R",
@@ -718,18 +718,8 @@
    ]
   },
   "GOVPARTYAZ-26": {
-   "updated_at": "2026-11-04T07:34:47+00:00",
+   "updated_at": "2026-11-04T07:48:29+00:00",
    "markets": [
-    {
-     "ticker": "GOVPARTYAZ-26-D",
-     "label": "Katie Hobbs",
-     "mid": 0.999,
-     "last": 0.997,
-     "bid": 0.998,
-     "ask": 1.0,
-     "volume": 1048224.89,
-     "status": "active"
-    },
     {
      "ticker": "GOVPARTYAZ-26-R",
      "label": "Andy Biggs",
@@ -737,24 +727,24 @@
      "last": 0.001,
      "bid": 0.0,
      "ask": 0.001,
-     "volume": 2187199.92,
+     "volume": 2187243.17,
+     "status": "active"
+    },
+    {
+     "ticker": "GOVPARTYAZ-26-D",
+     "label": "Katie Hobbs",
+     "mid": 0.999,
+     "last": 0.998,
+     "bid": 0.998,
+     "ask": 1.0,
+     "volume": 1048235.65,
      "status": "active"
     }
    ]
   },
   "GOVPARTYMI-26": {
-   "updated_at": "2026-11-04T07:34:53+00:00",
+   "updated_at": "2026-11-04T07:48:35+00:00",
    "markets": [
-    {
-     "ticker": "GOVPARTYMI-26-R",
-     "label": "John James",
-     "mid": 0.0005,
-     "last": 0.001,
-     "bid": 0.0,
-     "ask": 0.001,
-     "volume": 1072133.75,
-     "status": "active"
-    },
     {
      "ticker": "GOVPARTYMI-26-MD",
      "label": "Mike Duggan",
@@ -774,37 +764,57 @@
      "ask": 1.0,
      "volume": 336253.24,
      "status": "active"
+    },
+    {
+     "ticker": "GOVPARTYMI-26-R",
+     "label": "John James",
+     "mid": 0.0005,
+     "last": 0.001,
+     "bid": 0.0,
+     "ask": 0.001,
+     "volume": 1072133.75,
+     "status": "active"
     }
    ]
   },
   "GOVPARTYOR-26": {
-   "updated_at": "2026-11-04T07:34:59+00:00",
+   "updated_at": "2026-11-04T07:48:41+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYOR-26-D",
      "label": "Tina Kotek",
-     "mid": 0.999,
-     "last": 0.998,
-     "bid": 0.998,
+     "mid": 0.9985,
+     "last": 0.997,
+     "bid": 0.997,
      "ask": 1.0,
-     "volume": 822141.86,
+     "volume": 822220.7,
      "status": "active"
     },
     {
      "ticker": "GOVPARTYOR-26-R",
      "label": "Christine Drazan",
-     "mid": 0.001,
-     "last": 0.002,
+     "mid": 0.0015,
+     "last": 0.003,
      "bid": 0.0,
-     "ask": 0.002,
-     "volume": 1445043.54,
+     "ask": 0.003,
+     "volume": 1483192.46,
      "status": "active"
     }
    ]
   },
   "GOVPARTYNE-26": {
-   "updated_at": "2026-11-04T07:35:11+00:00",
+   "updated_at": "2026-11-04T07:48:53+00:00",
    "markets": [
+    {
+     "ticker": "GOVPARTYNE-26-D",
+     "label": "Lynne Walz",
+     "mid": 0.003,
+     "last": 0.007,
+     "bid": 0.0,
+     "ask": 0.006,
+     "volume": 394073.78,
+     "status": "active"
+    },
     {
      "ticker": "GOVPARTYNE-26-R",
      "label": "Jim Pillen",
@@ -812,23 +822,13 @@
      "last": 0.994,
      "bid": 0.994,
      "ask": 1.0,
-     "volume": 417407.43,
-     "status": "active"
-    },
-    {
-     "ticker": "GOVPARTYNE-26-D",
-     "label": "Lynne Walz",
-     "mid": 0.0035,
-     "last": 0.007,
-     "bid": 0.0,
-     "ask": 0.007,
-     "volume": 393811.98,
+     "volume": 419169.94,
      "status": "active"
     }
    ]
   },
   "GOVPARTYOK-26": {
-   "updated_at": "2026-11-04T07:35:17+00:00",
+   "updated_at": "2026-11-04T07:48:59+00:00",
    "markets": [
     {
      "ticker": "GOVPARTYOK-26-D",
